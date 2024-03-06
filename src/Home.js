@@ -13,10 +13,9 @@ function Home() {
         <img src="tarangini_logo.png" className="logo" alt="Tarangini Logo" />
       </div>
       <button className="login" onClick={logGoogleUser}>Login</button>
-      <div className="container">
         <div className="centered-text">Welcome to Tarangini</div>
         <div className="centered-text">Development in Progress...</div>
-      </div>
+        <img src="grid-removebg-preview.png" className="gris" alt="Grid Image" />
     </>
   );
 }
