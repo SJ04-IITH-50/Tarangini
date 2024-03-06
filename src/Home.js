@@ -90,10 +90,26 @@ function Home() {
         </button>
       )}
       <div className="container">
+      <button className="login" onClick={logGoogleUser}>Login</button>
         <div className="centered-text">Welcome to Tarangini</div>
+        <div style={{display:"flex",justifyContent:"center"}}>
+        <img src="Solar_panels_image.png" className="solar_panels" alt="Solar_panels Image"/>
+        </div>
+        <div style={{display:"flex",justifyContent:"center"}}>
+        {/* <img src="Battery_image.png" className="Battery" alt="Battery Image"/> */}
+        <img src="home_image.png" className="home" alt="Home Image" />
+        {/* <img src="grid-removebg-preview.png" className="grid" alt="Grid Image" /> */}
+        </div>
+        <div style={{display:"flex",justifyContent:"center"}}>
+        <img src="Battery_image.png" className="Battery" alt="Battery Image"/>
+        {/* <img src="home_image.png" className="home" alt="Home Image" /> */}
+        <img src="grid-removebg-preview.png" className="grid" alt="Grid Image" />
+        </div>
         <div className="centered-text">Development in Progress...</div>
       </div>
     </div>
+
+    </>
   );
 }
 

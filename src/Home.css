@@ -6,6 +6,36 @@
 .logo{
     height:7vh
 }
+.centered-text{
+  color: white;
+  text-align: center;
+}
+
+.solar_panels{
+  place-items: "center";
+  width: 30%;
+  height: 30%;
+}
+
+.Battery{
+  width: 20%;
+  height:20%;
+  padding-top: 10%;
+  padding-right: 10%;
+}
+
+.grid{
+  height: 40%;
+  width: 40%;
+}
+
+.home{
+  height: 30%;
+  width: 30%;
+  padding-top: 5%;
+}
+
+
 
 .container {
     display: flex;
@@ -101,3 +131,4 @@
 .confirmation-message button {
   margin-right: 5px;
 }
+
