@@ -71,12 +71,29 @@ function Home() {
         <button className="login" onClick={() => navigate("/login")}>Login</button>
       )}
       <div className="centered-text">Welcome to Tarangini</div>
+
       <div style={{ display: "flex", justifyContent: "center" }}>
         <img src="Solar_panels_image.png" className="solar_panels" alt="Solar_panels Image" />
       </div>
+
+      <div className="scroll-prompt">
+        <div className="scroll-prompt-arrow-container">
+          <div className="scroll-prompt-arrow"><div></div></div>
+          <div className="scroll-prompt-arrow"><div></div></div>
+        </div>
+      </div>
+
       <div style={{ display: "flex", justifyContent: "center" }}>
         <img src="home_image.png" className="home" alt="Home Image" />
       </div>
+
+      <div className="scroll-prompt">
+        <div className="scroll-prompt-arrow-container">
+          <div className="scroll-prompt-arrow"><div></div></div>
+          <div className="scroll-prompt-arrow"><div></div></div>
+        </div>
+      </div>
+
       <div style={{ display: "flex", justifyContent: "center" }}>
         <img src="grid-removebg-preview.png" className="grid" alt="Grid Image" />
       </div>
@@ -86,3 +103,4 @@ function Home() {
 }
 
 export default Home;
+
