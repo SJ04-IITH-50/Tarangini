@@ -14,34 +14,26 @@ function Home() {
     }
   }, [userData, navigate]);
 
-  const [user, setUser] = useState(userData);
-  const [showLogout, setShowLogout] = useState(false);
-  const [confirmLogout, setConfirmLogout] = useState(false);
+  // const [user, setUser] = useState(userData);
+  // const [showLogout, setShowLogout] = useState(false);
+  // const [confirmLogout, setConfirmLogout] = useState(false);
 
-  const handleLogout = () => {
-    if (confirmLogout) {
-      signOutUser();
-      setUser(null);
-      setShowLogout(false);
-      setConfirmLogout(false);
-      navigate("/")
-    } else {
-      setConfirmLogout(true);
-    }
-  };
+  // const handleLogout  = () => {
+  //   if (confirmLogout) {
+  //     signOutUser();
+  //     setUser(null);
+  //     setShowLogout(false);
+  //     setConfirmLogout(false);
+  //     navigate("/")
+  //   } else {
+  //     setConfirmLogout(true);
+  //   }
+  // };
 
   return (
     <div className="home-container">
-      {user && (
-        <div className="profile-icon top-right" onClick={() => setShowLogout(!showLogout)}>
-          {user.photoURL ? (
-            <img src={user.photoURL} alt="Profile" className="profile-image" />
-          ) : (
-            <div className="initials">{user.displayName ? user.displayName[0] : user.email[0]}</div>
-          )}
-        </div>
-      )}
-      <div className="logo_tarangini">
+      
+      {/* <div className="logo_tarangini">
         <img src="tarangini_logo.png" className="logo" alt="Tarangini Logo" />
       </div>
       {user ? (
@@ -69,14 +61,31 @@ function Home() {
         </>
       ) : (
         <button className="login" onClick={() => navigate("/login")}>Login</button>
-      )}
+      )} */}
       <div className="centered-text">Welcome to Tarangini</div>
+
       <div style={{ display: "flex", justifyContent: "center" }}>
         <img src="Solar_panels_image.png" className="solar_panels" alt="Solar_panels Image" />
       </div>
+
+      <div className="scroll-prompt">
+        <div className="scroll-prompt-arrow-container">
+          <div className="scroll-prompt-arrow"><div></div></div>
+          <div className="scroll-prompt-arrow"><div></div></div>
+        </div>
+      </div>
+
       <div style={{ display: "flex", justifyContent: "center" }}>
         <img src="home_image.png" className="home" alt="Home Image" />
       </div>
+
+      <div className="scroll-prompt">
+        <div className="scroll-prompt-arrow-container">
+          <div className="scroll-prompt-arrow"><div></div></div>
+          <div className="scroll-prompt-arrow"><div></div></div>
+        </div>
+      </div>
+
       <div style={{ display: "flex", justifyContent: "center" }}>
         <img src="grid-removebg-preview.png" className="grid" alt="Grid Image" />
       </div>
