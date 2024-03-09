@@ -7,9 +7,10 @@ function Home() {
   const navigate = useNavigate();
   const location = useLocation();
   const userData = location.state && location.state.user ? JSON.parse(location.state.user) : null;
-
+  // console.log(userData);
   useEffect(() => {
     if (!userData) {
+      // console.log(userData)
       navigate("/"); // Navigate to the home page if user data is null
     }
   }, [userData, navigate]);
