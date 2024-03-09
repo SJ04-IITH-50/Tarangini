@@ -13,7 +13,6 @@ function Header() {
 
   const [user, setUser] = useState(userData);
   const [showLogout, setShowLogout] = useState(false);
-  const [confirmLogout, setConfirmLogout] = useState(false);
 
   // Update user state when userData prop changes
   useEffect(() => {
@@ -25,7 +24,6 @@ function Header() {
       signOutUser();
       setUser(null);
       setShowLogout(false);
-      setConfirmLogout(false);
       navigate("/");
     }
     else{
