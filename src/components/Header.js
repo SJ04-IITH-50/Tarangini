@@ -21,16 +21,18 @@ function Header() {
   }, [userData]);
 
   const handleLogout = () => {
-    if (confirmLogout) {
-          signOutUser();
-          setUser(null);
-          setShowLogout(false);
-          setConfirmLogout(false);
-          navigate("/")
-        } else {
-          setConfirmLogout(true);
-        }
+    if (window.confirm("Are you sure you want to log out?")) {
+      signOutUser();
+      setUser(null);
+      setShowLogout(false);
+      setConfirmLogout(false);
+      navigate("/");
+    }
+    else{
+      setShowLogout(false)
+    }
   };
+  
 
   return (
     <>
@@ -49,15 +51,7 @@ function Header() {
       )}
       {showLogout && (
             <div className="logoutbox">
-              {confirmLogout ? (
-                <div className="confirmation-message">
-                  Are you sure you want to log out?
-                  <button onClick={handleLogout}>Yes</button>
-                  <button onClick={() => setConfirmLogout(false)}>No</button>
-                </div>
-              ) : (
-                <button onClick={handleLogout}>Logout</button>
-              )}
+              <button onClick={handleLogout}>Logout</button>
             </div>
           )}
     </>
