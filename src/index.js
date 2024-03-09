@@ -7,22 +7,25 @@ import Home from './Home';
 import HomeBeforeLogin from './HomeBeforeLogin';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
-import { createRoot } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import Header from './components/Header';
 
 
-const UserDataExtract=()=>{
-  const location = useLocation();
-  const userData = location.state && location.state.user ? JSON.parse(location.state.user) : null;
-  console.log(userData)
-};
+
 const RootComponent = () => {
+
+  const UserDataExtract = () => {
+    const location = useLocation();
+    const userData = location.state && location.state.user ? JSON.parse(location.state.user) : null;
+    console.log(userData);
+    return userData;
+  };
+  
   
   return (
     <>
-    <Header/>
       <Router>
-        <UserDataExtract/>
+        <Header userData={UserDataExtract}/>
         <Routes>
           <Route path="/" element={<HomeBeforeLogin/>} />
           <Route path="/home" element={<Home/>} />

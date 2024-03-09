@@ -1,0 +1,68 @@
+.logo{
+    height:7vh
+}
+
+.login,
+.logout-button,
+.logoutbox button {
+background-color: rgba(233, 249, 9, 0.011);
+color: white;
+padding: 10px 20px;
+font-size: 16px;
+cursor: pointer;
+transition: transform 0.3s ease;
+}
+.logout-button,.logoutbox button{
+color:white;
+}
+.button{
+border: pink;
+border-width: 2px;
+}
+
+.login:hover,
+.logout-button:hover,
+.logoutbox button:hover {
+transform: scale(1.1);
+}
+
+/* Your existing styles for profile icon */
+.profile-image {
+width: 40px;
+height: 40px;
+border-radius: 50%;
+}
+
+.initials {
+width: 40px;
+height: 40px;
+border-radius: 50%;
+background-color: #007bff;
+color: white;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 18px;
+font-weight: bold;
+}
+
+/* Your existing styles for logout box */
+.logoutbox {
+
+background-color: inherit;
+/* border: 1px solid #ccc; */
+padding-left: 70%;
+padding-top: 5%;
+}
+
+.confirmation-message {
+background-color:  rgba(233, 249, 9, 0.011);
+padding: 10px;
+/* margin-bottom: 10px; */
+}
+
+.confirmation-message button {
+margin-right: 5px;
+}
+
+
