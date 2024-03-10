@@ -43,6 +43,20 @@ export default function LabelBottomNavigation() {
     //   setUser(userData);
     // }, [userData]);
 
+    const location = useLocation();
+
+  // Extract user data from location state
+  const userData = location.state && location.state.user ? JSON.parse(location.state.user) : null;
+
+  const [user, setUser] = useState(userData);
+  const [showLogout, setShowLogout] = useState(false);
+
+  // Update user state when userData prop changes
+  useEffect(() => {
+    setUser(userData);
+  }, [userData]);
+
+  console.log(userData)
 
 
     const handleChange = (event, newValue) => {
@@ -52,11 +66,13 @@ export default function LabelBottomNavigation() {
             case 'recents':
                 // console.log(user);
                 // console.log(userData);
-                // navigate("/home", { state: { user: JSON.stringify(userData) } });
-                navigate("/home")
+                navigate("/home", { state: { user: JSON.stringify(userData) } });
+                // navigate("/home", { state: { user: n } });
                 break;
             case 'favorites':
-                navigate('/graph');
+                // navigate('/graph');
+                navigate("/graph", { state: { user: JSON.stringify(userData) } });
+
                 break;
             case 'nearby':
                 navigate('/receipt');

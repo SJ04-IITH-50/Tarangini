@@ -7,7 +7,7 @@ function Home() {
   const navigate = useNavigate();
   const location = useLocation();
   const userData = location.state && location.state.user ? JSON.parse(location.state.user) : null;
-  // console.log(userData);
+  console.log(userData);
   useEffect(() => {
     if (!userData) {
       // console.log(userData)

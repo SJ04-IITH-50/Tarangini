@@ -10,6 +10,7 @@ import reportWebVitals from './reportWebVitals';
 import { createRoot } from 'react-dom/client';
 import Header from './components/Header';
 import Bottomnav from './components/Bottomnav';
+import Graph from './components/Graph';
 
 const RootComponent = () => {
   const [userData, setUserData] = useState(null);
@@ -23,7 +24,7 @@ const RootComponent = () => {
 
 const BottomnavWrapper = () => {
   const location = useLocation();
-  return location.pathname !== "/" && <Bottomnav/>;
+  return location.pathname !== "/" && <Bottomnav userData={UserDataExtract}/>;
 };
 const HeaderWrapper = () => {
   const location = useLocation();
@@ -37,6 +38,8 @@ const HeaderWrapper = () => {
         <Routes>
           <Route path="/" element={<HomeBeforeLogin/>} />
           <Route path="/home" element={<Home/>} />
+          <Route path="/graph" element={<Graph/>} />
+          
         </Routes>
         <BottomnavWrapper />
       </Router>
