@@ -24,20 +24,22 @@ const styles = {
   }
 };
 
-export default function LabelBottomNavigation({ userData }) {
+export default function LabelBottomNavigation() {
     const [value, setValue] = React.useState('recents');
     const navigate = useNavigate();
-    const location = useLocation();
+    // const location = useLocation();
+    // console.log("printing userdata")
+    // console.log(userData);
 
     // Extract user data from location state
-    const userData_1 = location.state && location.state.user ? JSON.parse(location.state.user) : null;
+    // const userData_1 = location.state && location.state.user ? JSON.parse(location.state.user) : null;
   
-    const [user, setUser] = useState(userData_1 || userData);
+    // const [user, setUser] = useState(userData_1 || userData);
   
     // Update user state when userData prop changes
-    useEffect(() => {
-      setUser(userData);
-    }, [userData]);
+    // useEffect(() => {
+    //   setUser(userData);
+    // }, [userData]);
 
   
 
@@ -46,9 +48,10 @@ export default function LabelBottomNavigation({ userData }) {
         // Navigate to different pages based on the selected value
         switch (newValue) {
             case 'recents':
-                console.log(user);
-                console.log(userData);
-                navigate("/home", { state: { user: JSON.stringify(userData) } });
+                // console.log(user);
+                // console.log(userData);
+                // navigate("/home", { state: { user: JSON.stringify(userData) } });
+                navigate("/home")
                 break;
             case 'favorites':
                 navigate('/graph');

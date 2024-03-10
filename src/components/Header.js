@@ -39,7 +39,7 @@ function Header() {
       </div>
     
       {user && (
-        <div className="profile-icon" onClick={() => setShowLogout(!showLogout)}>
+        <div className="profile-icon" onClick={() => setShowLogout(true)}>
           {user.photoURL ? (
             <img src={user.photoURL} alt="Profile" className="profile-image" />
           ) : (
