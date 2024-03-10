@@ -23,7 +23,7 @@ const RootComponent = () => {
 
 const BottomnavWrapper = () => {
   const location = useLocation();
-  return location.pathname !== "/" && <Bottomnav userData={UserDataExtract}/>;
+  return location.pathname !== "/" && <Bottomnav/>;
 };
 const HeaderWrapper = () => {
   const location = useLocation();
