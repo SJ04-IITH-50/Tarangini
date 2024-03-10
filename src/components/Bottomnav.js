@@ -32,16 +32,18 @@ export default function LabelBottomNavigation() {
     // console.log(userData);
 
     // Extract user data from location state
+
     // const userData_1 = location.state && location.state.user ? JSON.parse(location.state.user) : null;
   
     // const [user, setUser] = useState(userData_1 || userData);
   
+
     // Update user state when userData prop changes
     // useEffect(() => {
     //   setUser(userData);
     // }, [userData]);
 
-  
+
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
