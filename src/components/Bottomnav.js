@@ -75,10 +75,10 @@ export default function LabelBottomNavigation() {
 
                 break;
             case 'nearby':
-                navigate('/receipt');
+                navigate("/receipt", { state: { user: JSON.stringify(userData) } });
                 break;
             case 'folder':
-                navigate('/account');
+                navigate("/account", { state: { user: JSON.stringify(userData) } });
                 break;
             default:
                 break;

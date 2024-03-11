@@ -11,6 +11,8 @@ import { createRoot } from 'react-dom/client';
 import Header from './components/Header';
 import Bottomnav from './components/Bottomnav';
 import Graph from './components/Graph';
+import Receipt from './components/Receipt';
+import Account from './components/Account';
 
 const RootComponent = () => {
   const [userData, setUserData] = useState(null);
@@ -39,7 +41,8 @@ const HeaderWrapper = () => {
           <Route path="/" element={<HomeBeforeLogin/>} />
           <Route path="/home" element={<Home/>} />
           <Route path="/graph" element={<Graph/>} />
-          
+          <Route path="/receipt" element={<Receipt/>} />
+          <Route path="/account" element={<Account/>} />
         </Routes>
         <BottomnavWrapper />
       </Router>

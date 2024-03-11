@@ -1,8 +1,8 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useState,useEffect} from 'react';
+import { useState,useEffect } from 'react';
 
-function Graph() {
+function Receipt() {
     const location = useLocation();
 
     // Extract user data from location state
@@ -24,10 +24,10 @@ function Graph() {
     }, [userData]);
     console.log(userData)
   return (
-    <div style={{color:"white"}}>
+    <div style={{color:"white",alignContent:"center"}}>
         Hi!
     </div>
   );
 }
 
-export default Graph;
+export default Receipt;
