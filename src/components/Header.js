@@ -33,7 +33,7 @@ function Header() {
   
 
   return (
-    <>
+    <div>
       <div className="logo_tarangini">
         <img src="tarangini_logo.png" className="logo" alt="Tarangini Logo" />
       </div>
@@ -52,7 +52,7 @@ function Header() {
               <button onClick={handleLogout}>Logout</button>
             </div>
           )}
-    </>
+    </div>
   );
 }
 

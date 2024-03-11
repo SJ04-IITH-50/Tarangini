@@ -139,10 +139,9 @@ padding: 10px;
 margin-right: 5px;
 }
 
-.scroll-prompt {
+/* .scroll-prompt {
 	position: relative;
 	z-index: 998;
-	/* bottom: -80px; */
 	left: 50%;
 	margin-left: -72px;
   margin-bottom: -100px;
@@ -266,4 +265,4 @@ margin-right: 5px;
 	100% {
 		transform: translateY(30px);
 	}
-}
+} */

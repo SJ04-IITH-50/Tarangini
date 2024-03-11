@@ -24,8 +24,10 @@ function Receipt() {
     }, [userData]);
     console.log(userData)
   return (
-    <div style={{color:"white",alignContent:"center"}}>
-        Hi!
+    <div style={{textAlign:'center',paddingTop:"35vh"}}>
+    <div style={{color:"white"}}>
+        Hi! You can view your Receipts Here
+    </div>
     </div>
   );
 }

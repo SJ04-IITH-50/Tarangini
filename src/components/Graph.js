@@ -22,10 +22,12 @@ function Graph() {
     useEffect(() => {
       setUser(userData);
     }, [userData]);
-    console.log(userData)
+    // console.log(userData)
   return (
+    <div style={{textAlign:'center',paddingTop:"35vh"}}>
     <div style={{color:"white"}}>
-        Hi!
+        Hi! You can view your Daily Usage and Current Produced Here
+    </div>
     </div>
   );
 }
