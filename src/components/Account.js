@@ -24,8 +24,13 @@ function Account() {
     }, [userData]);
     console.log(userData)
   return (
-    <div style={{color:"white",textAlign:"center"}}>
-        Hiii...!!
+    <div style={{textAlign:'center',paddingTop:"35vh"}}>
+    <div style={{color:"white"}}>
+        Hi! This is your profile..
+    </div>
+    <div style={{color:"white"}}>
+        I hope you LIKED It..!!
+    </div>
     </div>
   );
 }

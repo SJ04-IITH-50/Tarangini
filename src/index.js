@@ -24,26 +24,28 @@ const RootComponent = () => {
     return userData;
   };
 
-const BottomnavWrapper = () => {
-  const location = useLocation();
-  return location.pathname !== "/" && <Bottomnav userData={UserDataExtract}/>;
-};
-const HeaderWrapper = () => {
-  const location = useLocation();
-  return location.pathname !== "/" && <Header userData={UserDataExtract}/>;
-};
+  const BottomnavWrapper = () => {
+    const location = useLocation();
+    return location.pathname !== "/" && <Bottomnav userData={UserDataExtract}/>;
+  };
+  const HeaderWrapper = () => {
+    const location = useLocation();
+    return location.pathname !== "/" && <Header userData={UserDataExtract}/>;
+  };
 
   return (
     <>
       <Router>
         <HeaderWrapper/>
-        <Routes>
-          <Route path="/" element={<HomeBeforeLogin/>} />
-          <Route path="/home" element={<Home/>} />
-          <Route path="/graph" element={<Graph/>} />
-          <Route path="/receipt" element={<Receipt/>} />
-          <Route path="/account" element={<Account/>} />
-        </Routes>
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<HomeBeforeLogin/>} />
+            <Route path="/home" element={<Home/>} />
+            <Route path="/graph" element={<Graph/>} />
+            <Route path="/receipt" element={<Receipt/>} />
+            <Route path="/account" element={<Account/>} />
+          </Routes>
+        </div>
         <BottomnavWrapper />
       </Router>
     </>

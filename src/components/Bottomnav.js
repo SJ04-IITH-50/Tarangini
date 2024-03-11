@@ -16,7 +16,7 @@ const styles = {
     width: '100%',
     maxWidth: '100vw',
     zIndex: 1000, // Adjust z-index as needed
-    backgroundColor: 'inherit', // Change the background color here
+    backgroundImage: 'linear-gradient(120deg, rgba(7, 7, 9, 1) 16%, rgba(27, 24, 113, 1) 96%)',
     borderTop: '1px solid #ccc', // Add a line above the navigation bar
   },
   icon: {
@@ -25,60 +25,46 @@ const styles = {
 };
 
 export default function LabelBottomNavigation() {
-    const [value, setValue] = React.useState('recents');
     const navigate = useNavigate();
-    // const location = useLocation();
-    // console.log("printing userdata")
-    // console.log(userData);
-
-    // Extract user data from location state
-
-    // const userData_1 = location.state && location.state.user ? JSON.parse(location.state.user) : null;
-  
-    // const [user, setUser] = useState(userData_1 || userData);
-  
-
-    // Update user state when userData prop changes
-    // useEffect(() => {
-    //   setUser(userData);
-    // }, [userData]);
-
     const location = useLocation();
+    const [user, setUser] = useState(null); // Initialize user state as null
 
-  // Extract user data from location state
-  const userData = location.state && location.state.user ? JSON.parse(location.state.user) : null;
+    useEffect(() => {
+        const userData = location.state && location.state.user ? JSON.parse(location.state.user) : null;
+        setUser(userData);
+    }, [location.state]);
 
-  const [user, setUser] = useState(userData);
-  const [showLogout, setShowLogout] = useState(false);
+    useEffect(() => {
+        // Determine the initial value based on the current path
+        const path = location.pathname;
+        let initialValue = 'recents'; // Default value
+        if (path === '/graph') {
+            initialValue = 'favorites';
+        } else if (path === '/receipt') {
+            initialValue = 'nearby';
+        } else if (path === '/account') {
+            initialValue = 'folder';
+        }
+        setValue(initialValue);
+    }, [location.pathname]);
 
-  // Update user state when userData prop changes
-  useEffect(() => {
-    setUser(userData);
-  }, [userData]);
-
-  console.log(userData)
-
+    const [value, setValue] = React.useState('recents');
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
         // Navigate to different pages based on the selected value
         switch (newValue) {
             case 'recents':
-                // console.log(user);
-                // console.log(userData);
-                navigate("/home", { state: { user: JSON.stringify(userData) } });
-                // navigate("/home", { state: { user: n } });
+                navigate("/home", { state: { user: JSON.stringify(user) } });
                 break;
             case 'favorites':
-                // navigate('/graph');
-                navigate("/graph", { state: { user: JSON.stringify(userData) } });
-
+                navigate("/graph", { state: { user: JSON.stringify(user) } });
                 break;
             case 'nearby':
-                navigate("/receipt", { state: { user: JSON.stringify(userData) } });
+                navigate("/receipt", { state: { user: JSON.stringify(user) } });
                 break;
             case 'folder':
-                navigate("/account", { state: { user: JSON.stringify(userData) } });
+                navigate("/account", { state: { user: JSON.stringify(user) } });
                 break;
             default:
                 break;

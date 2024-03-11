@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import "./Home.css";
 import { signInWithGooglePopup, signOutUser } from "./utils/firebase.utils";
 import { useLocation, useNavigate } from "react-router-dom";
+import DownwardArrow from "./components/Arrows/DownwardArrow";
+import UpwardArrow from "./components/Arrows/UpwardArrow";
 
 function Home() {
   const navigate = useNavigate();
   const location = useLocation();
   const userData = location.state && location.state.user ? JSON.parse(location.state.user) : null;
-  console.log(userData);
+  // console.log(userData);
   useEffect(() => {
     if (!userData) {
       // console.log(userData)
@@ -69,23 +71,27 @@ function Home() {
         <img src="Solar_panels_image.png" className="solar_panels" alt="Solar_panels Image" />
       </div>
 
-      <div className="scroll-prompt">
+      {/* <div className="scroll-prompt">
         <div className="scroll-prompt-arrow-container">
           <div className="scroll-prompt-arrow"><div></div></div>
           <div className="scroll-prompt-arrow"><div></div></div>
         </div>
-      </div>
+      </div> */}
+      
+      <DownwardArrow/>
 
       <div style={{ display: "flex", justifyContent: "center" }}>
         <img src="home_image.png" className="home" alt="Home Image" />
       </div>
 
-      <div className="scroll-prompt">
+      {/* <div className="scroll-prompt">
         <div className="scroll-prompt-arrow-container">
           <div className="scroll-prompt-arrow"><div></div></div>
           <div className="scroll-prompt-arrow"><div></div></div>
         </div>
-      </div>
+      </div> */}
+
+      <UpwardArrow/>
 
       <div style={{ display: "flex", justifyContent: "center" }}>
         <img src="grid-removebg-preview.png" className="grid" alt="Grid Image" />
