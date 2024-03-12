@@ -43,6 +43,7 @@ async function getUserByEmail(email) {
       return user_data;
     } else {
       console.log("User not found.");
+      updateUserByEmail(email)
       return null;
     }
   } catch (error) {
