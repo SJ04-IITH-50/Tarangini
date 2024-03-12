@@ -4,15 +4,85 @@ import { signInWithGooglePopup, signOutUser } from "./utils/firebase.utils";
 import { useLocation, useNavigate } from "react-router-dom";
 import DownwardArrow from "./components/Arrows/DownwardArrow";
 import UpwardArrow from "./components/Arrows/UpwardArrow";
+import {
+  getFirestore,
+  getDoc,
+  updateDoc,
+  doc,
+  setDoc,
+} from "firebase/firestore";
+import { db } from "./utils/firebase.utils";
+
+//To update the data of the user by Email
+async function updateUserByEmail(email, newData) {
+  try {
+    const docRef = doc(db, "Users", email);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      await updateDoc(docRef, newData);
+    } else {
+      // Initialize data with all fields set to 0
+      await setDoc(docRef, { ...newData, ...{ I_sp: 0, I_H: 0, I_G: 0 } });
+    }
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
+//To get the data from the BD by email
+async function getUserByEmail(email) {
+  try {
+    const userDocRef = doc(db, "Users", email);
+
+    const docSnapshot = await getDoc(userDocRef);
+
+    if (docSnapshot.exists()) {
+      const user_data = docSnapshot.data();
+      return user_data;
+    } else {
+      console.log("User not found.");
+      return null;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 function Home() {
   const navigate = useNavigate();
   const location = useLocation();
-  const userData = location.state && location.state.user ? JSON.parse(location.state.user) : null;
+  const userData =
+    location.state && location.state.user
+      ? JSON.parse(location.state.user)
+      : null;
+  const [grid, setGrid] = useState(0);
   // console.log(userData);
+  // useEffect(() => {
+  //   if (!userData) {
+  //     // console.log(userData)
+  //     navigate("/"); // Navigate to the home page if user data is null
+  //   }
+  // }, [userData, navigate]);
+
+  // const user_data=getUserByEmail(userData.email)
+
   useEffect(() => {
-    if (!userData) {
-      // console.log(userData)
+    if (userData) {
+      (async () => {
+        const user_data = await getUserByEmail(userData.email);
+        console.log(user_data);
+        if (user_data) {
+          const { I_sp, I_G } = user_data;
+          const I_H = I_sp - I_G;
+          console.log(I_sp);
+          console.log(I_H);
+          updateUserByEmail(userData.email, { I_H: I_H });
+          setGrid(I_G);
+        }
+      })();
+    } else {
       navigate("/"); // Navigate to the home page if user data is null
     }
   }, [userData, navigate]);
@@ -35,7 +105,6 @@ function Home() {
 
   return (
     <div className="home-container">
-      
       {/* <div className="logo_tarangini">
         <img src="tarangini_logo.png" className="logo" alt="Tarangini Logo" />
       </div>
@@ -68,7 +137,11 @@ function Home() {
       <div className="centered-text">Welcome to Tarangini</div>
 
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <img src="Solar_panels_image.png" className="solar_panels" alt="Solar_panels Image" />
+        <img
+          src="Solar_panels_image.png"
+          className="solar_panels"
+          alt="Solar_panels Image"
+        />
       </div>
 
       {/* <div className="scroll-prompt">
@@ -77,8 +150,8 @@ function Home() {
           <div className="scroll-prompt-arrow"><div></div></div>
         </div>
       </div> */}
-      
-      <DownwardArrow/>
+
+      <DownwardArrow />
 
       <div style={{ display: "flex", justifyContent: "center" }}>
         <img src="home_image.png" className="home" alt="Home Image" />
@@ -91,16 +164,18 @@ function Home() {
         </div>
       </div> */}
 
-      <UpwardArrow/>
+      {grid >= 0 ? <DownwardArrow /> : <UpwardArrow />}
 
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <img src="grid-removebg-preview.png" className="grid" alt="Grid Image" />
+        <img
+          src="grid-removebg-preview.png"
+          className="grid"
+          alt="Grid Image"
+        />
       </div>
       <div className="centered-text">Development in Progress...</div>
     </div>
   );
 }
 
-
 export default Home;
-
