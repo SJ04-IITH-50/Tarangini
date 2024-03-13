@@ -43,7 +43,7 @@ async function getUserByEmail(email) {
       return user_data;
     } else {
       console.log("User not found.");
-      updateUserByEmail(email)
+      updateUserByEmail(email);
       return null;
     }
   } catch (error) {
@@ -54,11 +54,15 @@ async function getUserByEmail(email) {
 function Home() {
   const navigate = useNavigate();
   const location = useLocation();
+  const [Isp,setIsp]=useState(0);
+  const [IH,setIH]=useState(0);
+  const [IG,setIG]=useState(0);
+  const [grid,setGrid]=useState(0);
+
   const userData =
     location.state && location.state.user
       ? JSON.parse(location.state.user)
       : null;
-  const [grid, setGrid] = useState(0);
   // console.log(userData);
   // useEffect(() => {
   //   if (!userData) {
@@ -80,7 +84,14 @@ function Home() {
           console.log(I_sp);
           console.log(I_H);
           updateUserByEmail(userData.email, { I_H: I_H });
+          setIG(I_G);
+          setIsp(I_sp);
+          setIH(I_H);
           setGrid(I_G);
+          if(I_G<0){
+            setIG((-1)*I_G)
+            console.log(IG);
+          }
         }
       })();
     } else {
@@ -144,6 +155,11 @@ function Home() {
           alt="Solar_panels Image"
         />
       </div>
+      {userData && (
+          <div className="centered-text">
+            Current Produced: {Isp} units
+          </div>
+        )}
 
       {/* <div className="scroll-prompt">
         <div className="scroll-prompt-arrow-container">
@@ -157,6 +173,11 @@ function Home() {
       <div style={{ display: "flex", justifyContent: "center" }}>
         <img src="home_image.png" className="home" alt="Home Image" />
       </div>
+      {userData && (
+          <div className="centered-text">
+            Current Consumed: {IH} units
+          </div>
+        )}
 
       {/* <div className="scroll-prompt">
         <div className="scroll-prompt-arrow-container">
@@ -174,6 +195,16 @@ function Home() {
           alt="Grid Image"
         />
       </div>
+      {grid >= 0 ?
+          <div className="centered-text">
+            Current to Grid: {IG} units
+          </div>
+      
+         : <div className="centered-text">
+         Current from Grid: {IG} units
+       </div>}
+      
+
       <div className="centered-text">Development in Progress...</div>
     </div>
   );
