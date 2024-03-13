@@ -30,11 +30,15 @@ function Header() {
       setShowLogout(false)
     }
   };
+
+  const gotoHome = () =>{
+    navigate("/home", { state: { user: JSON.stringify(user) } });
+  };
   
 
   return (
     <div>
-      <div className="logo_tarangini">
+      <div className="logo_tarangini" onClick={gotoHome}>
         <img src="tarangini_logo.png" className="logo" alt="Tarangini Logo" />
       </div>
     

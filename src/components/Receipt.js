@@ -22,7 +22,7 @@ function Receipt() {
     useEffect(() => {
       setUser(userData);
     }, [userData]);
-    console.log(userData)
+    // console.log(userData)
   return (
     <div style={{textAlign:'center',paddingTop:"35vh"}}>
     <div style={{color:"white"}}>
