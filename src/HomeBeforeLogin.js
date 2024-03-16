@@ -74,7 +74,7 @@ function HomeBeforeLogin() {
                 <img src="tarangini_logo_just_Image.png" className="before_login_logo" alt="logo" />
             </div>
             <h1 style={{ textAlign: "center" }}>
-                <a href="" className="typewrite" data-period="2000" data-type='[ "Welcome to Tarangini","Renewable Source of Energy"]'>
+                <a href="" className="typewrite" data-period="2000" data-type='["Tarangini"]'>
                     <span className="wrap"></span>
                 </a>
             </h1>

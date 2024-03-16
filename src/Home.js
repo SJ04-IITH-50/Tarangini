@@ -95,6 +95,7 @@ function Home() {
         }
       })();
     } else {
+    //  console.log("Home to login!")
       navigate("/"); // Navigate to the home page if user data is null
     }
   }, [userData, navigate]);

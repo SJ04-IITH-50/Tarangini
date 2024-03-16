@@ -63,12 +63,11 @@ export default function LabelBottomNavigation() {
     useEffect(() => {
         const userData = location.state && location.state.user ? JSON.parse(location.state.user) : null;
         setUser(userData);
-        console.log(user);
+        // console.log(user);
     }, [location.state]);
-    console.log(user);
+    // console.log(user);
 
 
-    const [notf,setNotf]=useState(false);
 
     useEffect(() => {
         // Determine the initial value based on the current path
@@ -83,11 +82,7 @@ export default function LabelBottomNavigation() {
         }
         setValue(initialValue);
 
-        if(user){
-        const user_data=getUserByEmail(user.email);
-        setNotf(user_data.Notification)
-        console.log(notf);
-        }
+        
         // console.log(user.email);
         
     }, [location.pathname]);
@@ -107,17 +102,7 @@ export default function LabelBottomNavigation() {
             case 'nearby':
                 navigate("/receipt", { state: { user: JSON.stringify(user) } });
                 break;
-            case 'folder':
-                if(notf==false){
-                    window.alert("There are no New Notifications..!")
-                    navigate("/home", { state: { user: JSON.stringify(user) } });
-                }
-                else{
-                    window.alert("Please clean the Solar Panels..!")
-                    navigate("/home", { state: { user: JSON.stringify(user) } });
-
-                }
-                break;
+            
             default:
                 break;
         }
@@ -143,16 +128,7 @@ export default function LabelBottomNavigation() {
                     icon={<ReceiptIcon sx={styles.icon} />} // Apply the style to each icon
                 />
 
-                {notf==false ? <BottomNavigationAction 
-                    label="Notification" 
-                    value="folder" 
-                    icon={<NotificationsIcon sx={styles.icon} />} // Apply the style to each icon
-                /> :
-                <BottomNavigationAction 
-                    label="Notification" 
-                    value="folder" 
-                    icon={<NotificationImportantIcon sx={styles.icon} />} // Apply the style to each icon
-                />}
+               
                 
             </BottomNavigation>
         </React.Fragment>
