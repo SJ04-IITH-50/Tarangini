@@ -99,10 +99,10 @@ body {
   background-size: contain;
   -webkit-tap-highlight-color: transparent;
 
-  &.open {
+  /* &.open {
     background-image: url(https://img.icons8.com/ios-filled/50/delete-sign--v1.png);
     border: 3px black solid;
-  }
+  } */
 }
 
 .panel {
@@ -130,7 +130,9 @@ body {
     width: 100%;
     right: 0;
     opacity: 1;
+    cursor: pointer;
   }
+  
 }
 
 ul {

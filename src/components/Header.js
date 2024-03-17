@@ -48,6 +48,7 @@ function Header() {
   const location = useLocation();
   const [notf,setNotf]=useState(false);
   const panelRef = useRef(null);
+  const [isOpen, setOpen] = React.useState(false);
 
 
   // Extract user data from location state
@@ -80,7 +81,7 @@ function Header() {
           console.log(error);
         });
     }
-    
+    console.log(isOpen)
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
@@ -101,7 +102,7 @@ function Header() {
       setShowLogout(false)
     }
   };
-  const [isOpen, setOpen] = React.useState(false);
+  
 
   const gotoHome = () =>{
     console.log("Going to Home!")
