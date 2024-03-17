@@ -165,7 +165,7 @@ function Header() {
           {/* <div>{user.email}</div> */}
         </div>
       )}
-      <div className="initial">{user.displayName}</div>
+      <div className="initial" style={{fontWeight:"bold"}}>{user.displayName}</div>
       <div className="initial">{user.email}</div>
       {/* <p className="initial">{user.email}</p> */}
         <ul>

@@ -142,7 +142,9 @@ ul {
 
   li {
     list-style: none;
-    font-size: 30px;
+
+    font-size: 15px;
+
     text-align: left;
     margin-top: 1em;
 
