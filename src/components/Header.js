@@ -172,33 +172,33 @@ function Header() {
           
           {notf==false ?
           <li onClick={handleNotification} className='icons' >
-          <NotificationsIcon style={{paddingRight:"2px",height:"20px"}}/>
+          <NotificationsIcon style={{paddingRight:"2px",height:"40px"}}/>
             <a >Notifications</a>
           </li> :
                 <li onClick={handleNotification} className='icons' >
-                <NotificationImportantIcon style={{paddingRight:"2px",height:"20px"}}/>
+                <NotificationImportantIcon style={{paddingRight:"2px",height:"40px"}}/>
                 <div id='dot'></div>
                   <a >Notifications</a>
                 </li>}
           <li className='icons' onClick={gotoHome}>
-            <InfoIcon style={{paddingRight:"2px",height:"20px"}}/>
+            <InfoIcon style={{paddingRight:"2px",height:"40px"}}/>
             <a >About Us</a>
           </li>
           <li className='icons' onClick={gotoHome}>
-            <PermContactCalendarIcon style={{paddingRight:"2px",height:"20px"}}/>
+            <PermContactCalendarIcon style={{paddingRight:"2px",height:"40px"}}/>
             <a>Contact Us</a>
           </li>
           <li className='icons' onClick={gotoHome}>
-            <SettingsIcon style={{paddingRight:"2px",height:"20px"}}/>
+            <SettingsIcon style={{paddingRight:"2px",height:"40px"}}/>
             <a >Settings</a>
           </li>
-          <li className='icons' onClick={gotoHome}>
-            <GradeIcon style={{paddingRight:"2px",height:"20px"}}/>
-            <a >Rate Us</a>
+          <li className='icons' onClick={gotoHome}> 
+            <GradeIcon style={{paddingRight:"2px",height:"40px"}}/>
+            <a>Rate Us</a>
           </li>
-          <li className='logout' onClick={handleLogout}>
-            <LogoutIcon style={{paddingRight:"2px",height:"20px"}}/>
-            <a>Log out</a>
+          <li className='logout' onClick={handleLogout} >
+            <LogoutIcon style={{paddingRight:"2px",height:"40px"}}/>
+            <a style={{color:"red"}}>Log out</a>
           </li>
         </ul>
       </div>
