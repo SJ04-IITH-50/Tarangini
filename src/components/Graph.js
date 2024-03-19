@@ -80,6 +80,33 @@ function Graph() {
   const [graphType, setGraphType] = useState('monthly'); // Default to monthly
   const [user_data_month, setMonth] = useState(null);
   const [user_data_daily, setDaily] = useState(null);
+
+  useEffect(() => {
+    if (!userData) {
+      navigate("/");
+    }
+  }, [userData, navigate]);
+
+  getUserByEmail_month(userData.email)
+  .then(user_data => {
+    // console.log(user_data);
+    setMonth(user_data);
+    console.log(user_data_month);
+  })
+  .catch(error => {
+    console.log(error);
+  });
+
+  getUserByEmail_daily(userData.email)
+  .then(user_data => {
+    console.log(user_data);
+    setDaily(user_data);
+    console.log(user_data_daily);
+  })
+  .catch(error => {
+    console.log(error);
+  });
+
   // const user_data=getUserByEmail(userData.email);
   // console.log(user_data)
   // const options = {
@@ -99,7 +126,7 @@ function Graph() {
     responsive: true,
     plugins: {
       legend: {
-        position: 'top',
+        position:'top',
       },
       title: {
         display: true,
@@ -179,10 +206,10 @@ function Graph() {
     ],
   };
 
-  const labels_1 = ['1', '2', '3', '4', '5', '6', '7','8','9','10','11','12']
+  //const labels_1 = ['1', '2', '3', '4', '5', '6', '7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31'];
   
   const data_2 = {
-    labels_1,
+    labels:['1', '2', '3', '4', '5', '6', '7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31'],
     datasets: [
       {
         label: 'Power Generated',
@@ -199,7 +226,7 @@ function Graph() {
     ],
   };
   const data_3 = {
-    labels_1,
+    labels:['1', '2', '3', '4', '5', '6', '7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31'],
     datasets: [
       {
         label: 'Power to Grid',
@@ -208,33 +235,6 @@ function Graph() {
       },
     ],
   };
-
-
-  useEffect(() => {
-    if (!userData) {
-      navigate("/");
-    }
-  }, [userData, navigate]);
-
-  getUserByEmail_month(userData.email)
-    .then(user_data => {
-      // console.log(user_data);
-      setMonth(user_data);
-      console.log(user_data_month);
-    })
-    .catch(error => {
-      console.log(error);
-    });
-
-    getUserByEmail_daily(userData.email)
-    .then(user_data => {
-      console.log(user_data);
-      setDaily(user_data);
-      //console.log(user_data_month);
-    })
-    .catch(error => {
-      console.log(error);
-    });
 
   const handleGraphTypeChange = (event) => {
     const selectedGraphType = event.target.value;
@@ -264,11 +264,11 @@ function Graph() {
           onChange={handleGraphTypeChange}
         />
         <label htmlFor="switchMonthly">Monthly</label>
-        <label htmlFor="switchYearly">Yearly</label>
+        <label htmlFor="switchYearly">Daily</label>
         <div className="switch-wrapper">
           <div className="switch">
             <div>Monthly</div>
-            <div>Yearly</div>
+            <div>Daily</div>
           </div>
         </div>
       </div>
