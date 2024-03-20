@@ -23,7 +23,8 @@ async function updateUserByEmail(email, newData) {
       await updateDoc(docRef, newData);
     } else {
       // Initialize data with all fields set to 0
-      await setDoc(docRef, { ...newData, ...{ I_sp: 0, I_H: 0, I_G: 0,Notification:false } });
+      await setDoc(docRef, { ...newData, ...{ I_sp: 0, I_H: 0, I_G: 0,Notification:false,Month_H:[0,0,0,0,0,0,0,0,0,0,0,0],Month_sp:[0,0,0,0,0,0,0,0,0,0,0,0],Month_G:[0,0,0,0,0,0,0,0,0,0,0,0]} });
+      
     }
   } catch (error) {
     console.log(error);

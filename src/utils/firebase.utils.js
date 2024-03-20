@@ -4,14 +4,15 @@ import { getAuth, signInWithPopup, signOut, GoogleAuthProvider } from "firebase/
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCyBYKFy7yTp0BM-D2X3dizMfLT4nAvRJA",
-  authDomain: "tarangini-da482.firebaseapp.com",
-  projectId: "tarangini-da482",
-  storageBucket: "tarangini-da482.appspot.com",
-  messagingSenderId: "268758791474",
-  appId: "1:268758791474:web:ffd35d4f82f4cc2929132b",
-  measurementId: "G-JH57Y7Y930"
+  apiKey: "AIzaSyCcJTPf2FTaVUDCgwtbDAmGq4DhrnMpqu4",
+  authDomain: "tarangini2-0.firebaseapp.com",
+  projectId: "tarangini2-0",
+  storageBucket: "tarangini2-0.appspot.com",
+  messagingSenderId: "81501909590",
+  appId: "1:81501909590:web:19cfcde7163467fdb981f7",
+  measurementId: "G-R9MCY561CH"
 };
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
