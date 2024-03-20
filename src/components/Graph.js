@@ -14,25 +14,30 @@ import {
   CategoryScale,
   LinearScale,
   BarElement,
+  LineElement, // Add LineElement import
+  PointElement, // Add PointElement import
   Title,
   Tooltip,
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-
-
+import { Line } from 'react-chartjs-2';
 
 ChartJS.register(
   CategoryScale,
   LinearScale,
   BarElement,
+  LineElement, // Register LineElement
+  PointElement, // Register PointElement
   Title,
   Tooltip,
   Legend
 );
 
+
+
 //To get the data from the BD by email
-async function getUserByEmail_month(email) {
+async function getUserByEmail(email) {
   try {
     const userDocRef = doc(db, "Users", email);
 
@@ -41,13 +46,36 @@ async function getUserByEmail_month(email) {
     if (docSnapshot.exists()) {
       const user_data = docSnapshot.data();
       // console.log(user_data.Notification)
-      return user_data.Month;
+      return user_data;
     } else {
       console.log("User not found.");
       return null;
     }
   } catch (error) {
     console.log(error);
+  }
+}
+
+//To update the data of the user by Email
+async function updateUserByEmail(email, newData) {
+  try {
+    const docRef = doc(db, "Users", email);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      const userData = docSnap.data();
+      const updatedData = { ...userData, Month_H: newData };
+      await updateDoc(docRef, updatedData);
+      await updateDoc(docRef, newData);
+      await setDoc(docRef, { ...newData, ...{Month_H:[0,0,0,0,0,0,0,0,0,0,0,0]} });
+
+    } else {
+      // Initialize data with all fields set to 0
+      await setDoc(docRef, { ...newData, ...{ I_sp: 0, I_H: 0, I_G: 0,Notification:false,Month_H:[0,0,0,0,0,0,0,0,0,0,0,0],Month_sp:[0,0,0,0,0,0,0,0,0,0,0,0],Month_G:[0,0,0,0,0,0,0,0,0,0,0,0]} });
+    }
+  } catch (error) {
+    console.log(error);
+    throw error;
   }
 }
 
@@ -78,7 +106,10 @@ function Graph() {
   const userData = location.state && location.state.user ? JSON.parse(location.state.user) : null;
 
   const [graphType, setGraphType] = useState('monthly'); // Default to monthly
-  const [user_data_month, setMonth] = useState(null);
+  const [month_G, setMonth_G] = useState(null);
+  const [month_H, setMonth_H] = useState(null);
+  let month_H_demo=[0,0,0,0,0,0,0,0,0,0,0,0];
+  const [month_sp, setMonth_sp] = useState(null);
   const [user_data_daily, setDaily] = useState(null);
 
   useEffect(() => {
@@ -87,25 +118,41 @@ function Graph() {
     }
   }, [userData, navigate]);
 
-  getUserByEmail_month(userData.email)
+  // updateUserByEmail(userData.email)
+
+  getUserByEmail(userData.email)
   .then(user_data => {
     // console.log(user_data);
-    setMonth(user_data);
-    console.log(user_data_month);
+    setMonth_G(user_data.Month_G);
+    setMonth_sp(user_data.Month_sp);
+    // setMonth_H(month_sp-month_G);
+    console.log(month_H);
+    for (let i = 0; i < 12; i++) {
+      month_H_demo[i]= month_sp[i]-month_G[i] ;
+    }
+    // console.log(month_H);
+    // console.log(month_H);
+    // console.log(month_G);
+    // console.log(month_sp);
+  // updateUserByEmail(userData.email,month_H)
+  setMonth_H(month_H_demo);
+
+    // console.log(user_data_month);
   })
   .catch(error => {
     console.log(error);
   });
 
-  getUserByEmail_daily(userData.email)
-  .then(user_data => {
-    console.log(user_data);
-    setDaily(user_data);
-    console.log(user_data_daily);
-  })
-  .catch(error => {
-    console.log(error);
-  });
+
+  // getUserByEmail_daily(userData.email)
+  // .then(user_data => {
+  //   console.log(user_data);
+  //   setDaily(user_data);
+  //   console.log(user_data_daily);
+  // })
+  // .catch(error => {
+  //   console.log(error);
+  // });
 
   // const user_data=getUserByEmail(userData.email);
   // console.log(user_data)
@@ -183,28 +230,36 @@ function Graph() {
     datasets: [
       {
         label: 'Power Generated',
-        data: user_data_month,
+        data: month_sp,
         backgroundColor: 'white',
         color:'White',
+        barThickness: 5, // Change this value to adjust the thickness of bars
+
       },
       {
         label: 'Power Consumed',
-        data: user_data_month,
+        data: month_H,
         backgroundColor: 'black',
+        barThickness: 7, // Change this value to adjust the thickness of bars
+
         color:'White',
       },
     ],
   };
   const data_1 = {
     labels,
-    datasets: [
-      {
-        label: 'Power to Grid',
-        data: user_data_month,
-        backgroundColor: 'white',
-      },
-    ],
+    datasets: [],
   };
+  
+  if (month_G) {
+    data_1.datasets.push({
+      label: 'Power to Grid',
+      data: month_G.map((value, index) => ({ x: index, y: value })),
+      borderColor: 'white', // Specify the line color
+    });
+  }
+  
+  
 
   //const labels_1 = ['1', '2', '3', '4', '5', '6', '7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31'];
   
@@ -280,7 +335,7 @@ function Graph() {
               {/* Render your monthly graph using userData */}
               {/* <p>User data: {JSON.stringify(userData)}</p> */}
               <Bar options={options} data={data} />
-              <Bar options={options_1} data={data_1} style={{marginTop:'40px'}}/>
+              <Line options={options_1} data={data_1} style={{marginTop:'40px'}}/>
             </div>
           )}
           {graphType === 'yearly' && (
