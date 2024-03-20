@@ -3,15 +3,13 @@ import { useLocation } from 'react-router-dom';
 import { signInWithGooglePopup, signOutUser } from "../utils/firebase.utils";
 import { useNavigate } from "react-router-dom";
 import "./Header.css"
-import LogoutIcon from '@mui/icons-material/Logout';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import PermContactCalendarIcon from '@mui/icons-material/PermContactCalendar';
-import SettingsIcon from '@mui/icons-material/Settings';
-import GradeIcon from '@mui/icons-material/Grade';
-import InfoIcon from '@mui/icons-material/Info';
-import CloseIcon from '@mui/icons-material/Close';
-import NotificationImportantIcon from '@mui/icons-material/NotificationImportant';
-
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import GradeOutlinedIcon from '@mui/icons-material/GradeOutlined';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
+import NotificationImportantOutlinedIcon from '@mui/icons-material/NotificationImportantOutlined';
+import PermContactCalendarOutlinedIcon from '@mui/icons-material/PermContactCalendarOutlined';
 
 import {
   getFirestore,
@@ -46,7 +44,7 @@ async function getUserByEmail_Notf(email) {
 function Header() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [notf,setNotf]=useState(false);
+  const [notf, setNotf] = useState(false);
   const panelRef = useRef(null);
   const [isOpen, setOpen] = React.useState(false);
 
@@ -64,13 +62,13 @@ function Header() {
       setOpen(false);
       console.log("Got to hOme")
     }
-    
+
   }
 
   // Update user state when userData prop changes
   useEffect(() => {
     setUser(userData);
-    if(user){
+    if (user) {
       getUserByEmail_Notf(user.email)
         .then(user_data => {
           // console.log(user_data);
@@ -88,7 +86,7 @@ function Header() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [userData]);
-  
+
 
 
   const handleLogout = () => {
@@ -98,38 +96,38 @@ function Header() {
       setShowLogout(false);
       navigate("/");
     }
-    else{
+    else {
       setShowLogout(false)
     }
   };
-  
 
-  const gotoHome = () =>{
+
+  const gotoHome = () => {
     console.log("Going to Home!")
     navigate("/home", { state: { user: JSON.stringify(user) } });
     setOpen(false);
   };
 
 
-  const handleNotification =()=>{
-    if(notf==false){
+  const handleNotification = () => {
+    if (notf == false) {
       window.alert("There are no New Notifications..!")
       // navigate("/home", { state: { user: JSON.stringify(user) } });
-  }
-  else{
+    }
+    else {
       window.alert("Please clean the Solar Panels..!")
       // navigate("/home", { state: { user: JSON.stringify(user) } });
 
-  }
+    }
   };
-  
+
 
   return (
     <div>
       <div className="logo_tarangini" onClick={gotoHome}>
         <img src="tarangini_logo.png" className="logo" alt="Tarangini Logo" />
       </div>
-    
+
       {/* {user && (
         <div className="profile-icon" onClick={() => setShowLogout(!showLogout)}>
           {user.photoURL ? (
@@ -146,63 +144,77 @@ function Header() {
           )} */}
 
 
-<div>
-      <button
-        onClick={() => setOpen(!isOpen)}
-        className={`hamburger-button ${isOpen ? "open" : "close"}`}
-      />
-      <div ref={panelRef} className={`panel ${isOpen ? "open" : "close"}`}>
-      {user && (
-        <div className="profile-icon">
-          {user.photoURL ? (
-            <>
-            <img src={user.photoURL} alt="Profile" className="profile-image" />
-            {/* <p className="initial">{user.email}</p> */}
-            </>
-          ) : (
-            <div className="initials">{user.displayName ? user.displayName[0] : user.email[0]}</div>
+      <div>
+        {notf == false ?
+          <div>
+            <button
+              onClick={() => setOpen(!isOpen)}
+              className={`hamburger-button ${isOpen ? "open" : "close"}`}
+            />
+          </div> :
+          <div>
+            <div id='dot_1'></div>
+          <button
+            onClick={() => setOpen(!isOpen)}
+            className={`hamburger-button ${isOpen ? "open" : "close"}`}
+          />
+        </div>}
+        <button
+          onClick={() => setOpen(!isOpen)}
+          className={`hamburger-button ${isOpen ? "open" : "close"}`}
+        />
+        <div ref={panelRef} className={`panel ${isOpen ? "open" : "close"}`}>
+          {user && (
+            <div className="profile-icon">
+              {user.photoURL ? (
+                <>
+                  <img src={user.photoURL} alt="Profile" className="profile-image" />
+                  {/* <p className="initial">{user.email}</p> */}
+                </>
+              ) : (
+                <div className="initials">{user.displayName ? user.displayName[0] : user.email[0]}</div>
+              )}
+              {/* <div>{user.email}</div> */}
+            </div>
           )}
-          {/* <div>{user.email}</div> */}
-        </div>
-      )}
-      <div className="initial" style={{fontWeight:"bold"}}>{user.displayName}</div>
-      <div className="initial">{user.email}</div>
-      {/* <p className="initial">{user.email}</p> */}
-        <ul>
-          
-          {notf==false ?
-          <li onClick={handleNotification} className='icons' >
-          <NotificationsIcon style={{paddingRight:"2px",height:"40px"}}/>
-            <a >Notifications</a>
-          </li> :
-                <li onClick={handleNotification} className='icons' >
-                <NotificationImportantIcon style={{paddingRight:"2px",height:"40px"}}/>
+          <div className="initial" style={{ fontWeight: "bold" }}>{user.displayName}</div>
+          <div className="initial">{user.email}</div>
+          {/* <p className="initial">{user.email}</p> */}
+          <ul>
+
+            {notf == false ?
+              <li onClick={handleNotification} className='icons' >
+                <NotificationsNoneOutlinedIcon style={{ paddingRight: "2px", height: "40px" }} />
+                <a >Notifications</a>
+              </li> :
+              <li onClick={handleNotification} className='icons' >
+                <NotificationImportantOutlinedIcon style={{ paddingRight: "2px", height: "40px" }} />
                 <div id='dot'></div>
-                  <a >Notifications</a>
-                </li>}
-          <li className='icons' onClick={gotoHome}>
-            <InfoIcon style={{paddingRight:"2px",height:"40px"}}/>
-            <a >About Us</a>
-          </li>
-          <li className='icons' onClick={gotoHome}>
-            <PermContactCalendarIcon style={{paddingRight:"2px",height:"40px"}}/>
-            <a>Contact Us</a>
-          </li>
-          <li className='icons' onClick={gotoHome}>
-            <SettingsIcon style={{paddingRight:"2px",height:"40px"}}/>
-            <a >Settings</a>
-          </li>
-          <li className='icons' onClick={gotoHome}> 
-            <GradeIcon style={{paddingRight:"2px",height:"40px"}}/>
-            <a>Rate Us</a>
-          </li>
-          <li className='logout' onClick={handleLogout} >
-            <LogoutIcon style={{paddingRight:"2px",height:"40px"}}/>
-            <a style={{color:"red"}}>Log out</a>
-          </li>
-        </ul>
+                <a >Notifications</a>
+              </li>}
+            <li className='icons' onClick={gotoHome}>
+              <InfoOutlinedIcon style={{ paddingRight: "2px", height: "40px" }} />
+              <a >About Us</a>
+            </li>
+            <li className='icons' onClick={gotoHome}>
+              <PermContactCalendarOutlinedIcon style={{ paddingRight: "2px", height: "40px" }} />
+              <a>Contact Us</a>
+            </li>
+            <li className='icons' onClick={gotoHome}>
+              <SettingsOutlinedIcon style={{ paddingRight: "2px", height: "40px" }} />
+              <a >Settings</a>
+            </li>
+            <li className='icons' onClick={gotoHome}>
+              <GradeOutlinedIcon style={{ paddingRight: "2px", height: "40px" }} />
+              <a>Rate Us</a>
+            </li>
+            <li className='logout' onClick={handleLogout} >
+              <LogoutOutlinedIcon style={{ paddingRight: "2px", height: "40px" }} />
+              <a style={{ color: "red" }}>Log out</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
     </div>
   );
 }

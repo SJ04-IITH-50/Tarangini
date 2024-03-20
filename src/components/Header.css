@@ -112,7 +112,7 @@ body {
   /* background-size: 117px 188px; */
   transition: all 0.4s cubic-bezier(0.42, 0, 0.34, 1.01);
   position: fixed;
-  z-index: 5;
+  z-index: 15;
   right: -100%;
   top: 0;
   height: 100%;
@@ -173,6 +173,7 @@ ul {
 
 .icons{
     display: flex;
+    font-size: medium;
     color: rgba(27, 24, 113, 1);
 }
 #dot {
@@ -190,3 +191,18 @@ ul {
     border-radius: 50%;
   }
   
+  #dot_1 {
+    position: relative;
+  }
+  
+  #dot_1::after {
+    content: "";
+    position: fixed;
+    top: 1.7vh;
+    right: 4px;
+    width: 8px;
+    height: 8px;
+    background-color: red; /* Change color as needed */
+    border-radius: 50%;
+    z-index: 11;
+  }
