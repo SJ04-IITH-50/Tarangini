@@ -56,28 +56,6 @@ async function getUserByEmail(email) {
   }
 }
 
-//To update the data of the user by Email
-async function updateUserByEmail(email, newData) {
-  try {
-    const docRef = doc(db, "Users", email);
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) {
-      const userData = docSnap.data();
-      const updatedData = { ...userData, Month_H: newData };
-      await updateDoc(docRef, updatedData);
-      await updateDoc(docRef, newData);
-      await setDoc(docRef, { ...newData, ...{Month_H:[0,0,0,0,0,0,0,0,0,0,0,0]} });
-
-    } else {
-      // Initialize data with all fields set to 0
-      await setDoc(docRef, { ...newData, ...{ I_sp: 0, I_H: 0, I_G: 0,Notification:false,Month_H:[0,0,0,0,0,0,0,0,0,0,0,0],Month_sp:[0,0,0,0,0,0,0,0,0,0,0,0],Month_G:[0,0,0,0,0,0,0,0,0,0,0,0]} });
-    }
-  } catch (error) {
-    console.log(error);
-    throw error;
-  }
-}
 
 async function getUserByEmail_daily(email) {
   try {
@@ -120,28 +98,23 @@ function Graph() {
 
   // updateUserByEmail(userData.email)
 
-  getUserByEmail(userData.email)
-  .then(user_data => {
-    // console.log(user_data);
-    setMonth_G(user_data.Month_G);
-    setMonth_sp(user_data.Month_sp);
-    // setMonth_H(month_sp-month_G);
-    console.log(month_H);
-    for (let i = 0; i < 12; i++) {
-      month_H_demo[i]= month_sp[i]-month_G[i] ;
-    }
-    // console.log(month_H);
-    // console.log(month_H);
-    // console.log(month_G);
-    // console.log(month_sp);
-  // updateUserByEmail(userData.email,month_H)
-  setMonth_H(month_H_demo);
-
-    // console.log(user_data_month);
-  })
-  .catch(error => {
-    console.log(error);
-  });
+  useEffect(() => {
+    getUserByEmail(userData.email)
+      .then(user_data => {
+        // Perform calculations
+        let month_H_demo = [];
+        for (let i = 0; i < 12; i++) {
+          month_H_demo[i] = user_data.Month_sp[i] - user_data.Month_G[i];
+        }
+        // Set states
+        setMonth_G(user_data.Month_G);
+        setMonth_sp(user_data.Month_sp);
+        setMonth_H(month_H_demo);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+}, []); // Empty dependency array for running only once
 
 
   // getUserByEmail_daily(userData.email)

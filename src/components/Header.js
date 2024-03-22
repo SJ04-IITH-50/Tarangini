@@ -85,7 +85,7 @@ function Header() {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [userData]);
+  }, []);
 
 
 
