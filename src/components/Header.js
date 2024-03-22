@@ -184,32 +184,32 @@ function Header() {
 
             {notf == false ?
               <li onClick={handleNotification} className='icons' >
-                <NotificationsNoneOutlinedIcon style={{ paddingRight: "2px", height: "40px" }} />
+                <NotificationsNoneOutlinedIcon style={{ paddingRight: "2px", height: "30px" }} />
                 <a >Notifications</a>
               </li> :
               <li onClick={handleNotification} className='icons' >
-                <NotificationImportantOutlinedIcon style={{ paddingRight: "2px", height: "40px" }} />
+                <NotificationImportantOutlinedIcon style={{ paddingRight: "2px", height: "30px" }} />
                 <div id='dot'></div>
                 <a >Notifications</a>
               </li>}
             <li className='icons' onClick={gotoHome}>
-              <InfoOutlinedIcon style={{ paddingRight: "2px", height: "40px" }} />
+              <InfoOutlinedIcon style={{ paddingRight: "2px", height: "30px"}} />
               <a >About Us</a>
             </li>
             <li className='icons' onClick={gotoHome}>
-              <PermContactCalendarOutlinedIcon style={{ paddingRight: "2px", height: "40px" }} />
+              <PermContactCalendarOutlinedIcon style={{ paddingRight: "2px", height: "30px" }} />
               <a>Contact Us</a>
             </li>
             <li className='icons' onClick={gotoHome}>
-              <SettingsOutlinedIcon style={{ paddingRight: "2px", height: "40px" }} />
+              <SettingsOutlinedIcon style={{ paddingRight: "2px", height: "30px" }} />
               <a >Settings</a>
             </li>
             <li className='icons' onClick={gotoHome}>
-              <GradeOutlinedIcon style={{ paddingRight: "2px", height: "40px" }} />
+              <GradeOutlinedIcon style={{ paddingRight: "2px", height: "30px" }} />
               <a>Rate Us</a>
             </li>
             <li className='logout' onClick={handleLogout} >
-              <LogoutOutlinedIcon style={{ paddingRight: "2px", height: "40px" }} />
+              <LogoutOutlinedIcon style={{ paddingRight: "2px", height: "30px" }} />
               <a style={{ color: "red" }}>Log out</a>
             </li>
           </ul>
