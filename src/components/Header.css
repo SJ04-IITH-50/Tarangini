@@ -80,6 +80,7 @@ body {
 }
 .initial{
     text-align: center;
+    font-size: 16px;
 }
 
 .hamburger-button {
@@ -166,7 +167,7 @@ ul {
 .logout{
     display: flex;
     color: red;
-    font-size: 18px;
+    font-size: 20px;
     padding-left: 1%;
     /* padding-right: 5%; */
     /* justify-content: center; */
@@ -177,7 +178,7 @@ ul {
     /* padding-top: 1%; */
     padding-left: 1%;
     display: flex;
-    font-size: 18px;
+    font-size: 20px;
     color: rgba(27, 24, 113, 1);
 }
 #dot {
