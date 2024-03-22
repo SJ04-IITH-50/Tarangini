@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
-import './index.css';
-import App from './App';
-import Home from './Home';
+import './index.css';import Home from './Home';
 import HomeBeforeLogin from './HomeBeforeLogin';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';

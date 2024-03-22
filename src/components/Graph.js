@@ -88,7 +88,10 @@ function Graph() {
   const [month_H, setMonth_H] = useState(null);
   let month_H_demo=[0,0,0,0,0,0,0,0,0,0,0,0];
   const [month_sp, setMonth_sp] = useState(null);
-  const [user_data_daily, setDaily] = useState(null);
+  const [daily_G, setDaily_G] = useState(null);
+  const [daily_H, setDaily_H] = useState(null);
+  let daily_H_demo=[0,0,0,0,0,0,0,0,0,0,0,0];
+  const [daily_sp, setDaily_sp] = useState(null);
 
   useEffect(() => {
     if (!userData) {
@@ -106,10 +109,17 @@ function Graph() {
         for (let i = 0; i < 12; i++) {
           month_H_demo[i] = user_data.Month_sp[i] - user_data.Month_G[i];
         }
+        let daily_H_demo = [];
+        for (let i = 0; i < 31; i++) {
+          daily_H_demo[i] = user_data.Daily_sp[i] - user_data.Daily_G[i];
+        }
         // Set states
         setMonth_G(user_data.Month_G);
         setMonth_sp(user_data.Month_sp);
         setMonth_H(month_H_demo);
+        setDaily_G(user_data.Daily_G);
+        setDaily_sp(user_data.Daily_sp);
+        setDaily_H(daily_H_demo);
       })
       .catch(error => {
         console.log(error);
@@ -214,7 +224,6 @@ function Graph() {
         data: month_H,
         backgroundColor: 'black',
         barThickness: 7, // Change this value to adjust the thickness of bars
-
         color:'White',
       },
     ],
@@ -226,28 +235,31 @@ function Graph() {
   
   if (month_G) {
     data_1.datasets.push({
+      type: "line",
       label: 'Power to Grid',
       data: month_G.map((value, index) => ({ x: index, y: value })),
-      borderColor: 'white', // Specify the line color
+      borderColor: 'white',
+      fill: true, // Fill the area under the line
     });
   }
   
   
+  
 
-  //const labels_1 = ['1', '2', '3', '4', '5', '6', '7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31'];
+  // const labels_1 = ['1', '2', '3', '4', '5', '6', '7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31'];
   
   const data_2 = {
     labels:['1', '2', '3', '4', '5', '6', '7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31'],
     datasets: [
       {
         label: 'Power Generated',
-        data: user_data_daily,
+        data: daily_sp,
         backgroundColor: 'white',
         color:'White',
       },
       {
         label: 'Power Consumed',
-        data: user_data_daily,
+        data: daily_H,
         backgroundColor: 'black',
         color:'White',
       },
@@ -255,14 +267,15 @@ function Graph() {
   };
   const data_3 = {
     labels:['1', '2', '3', '4', '5', '6', '7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31'],
-    datasets: [
-      {
-        label: 'Power to Grid',
-        data: user_data_daily,
-        backgroundColor: 'white',
-      },
-    ],
+    datasets: [ ],
   };
+  if (daily_G) {
+    data_3.datasets.push({
+      label: 'Power to Grid',
+      data: daily_G.map((value, index) => ({ x: index, y: value })),
+      borderColor: 'white', // Specify the line color
+    });
+  }
 
   const handleGraphTypeChange = (event) => {
     const selectedGraphType = event.target.value;
@@ -313,11 +326,11 @@ function Graph() {
           )}
           {graphType === 'yearly' && (
             <div>
-              <h2>Yearly Graph</h2>
+              <h2 style={{textAlign:"center"}}>Yearly Graph</h2>
               {/* Render your yearly graph using userData */}
               {/* <p>User data: {JSON.stringify(userData)}</p> */}
               <Bar options={options} data={data_2} />
-              <Bar options={options_1} data={data_3} style={{marginTop:'40px'}}/>
+              <Line options={options_1} data={data_3} style={{marginTop:'40px'}}/>
             </div>
           )}
         </div>
