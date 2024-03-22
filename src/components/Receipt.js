@@ -84,11 +84,11 @@ function Receipt() {
   return (
     <>
     <div style={{ textAlign: 'center', color: "black", backgroundColor: "white", marginLeft: "10px", marginRight: "10px", border: "10px red", borderColor: "red", borderRadius: "5vw", fontSize: "large", marginTop: "3vh" }}>
-      <div style={{ fontSize: "x-large", textAlign: 'center', color: "black", fontWeight: "bolder" }}>
+      <div style={{ fontSize: "x-large", textAlign: 'center', color: "black", fontWeight: "bolder",paddingTop:"7vw" }}>
         Payment Information
       </div>
       <hr style={{ color: "red" }} />
-      <div style={{ display: 'flex', justifyContent: 'center', color: "black" }}>
+      <div style={{ display: 'flex', justifyContent: 'center', color: "black",paddingBottom:"7vw" }}>
 
         <div style={{ marginRight: '8vw', textAlign: 'left' }}>
           <div>Total units Consumed:</div>
@@ -109,19 +109,19 @@ function Receipt() {
       </div>
     </div>
 
-      <div style={{ color: "white", paddingTop: "10px", paddingLeft: "10px", fontWeight: "bolder", fontSize: "large" }}> 
+      <div style={{ textAlign:"center",color: "white", paddingTop: "10px", paddingLeft: "10px", fontWeight: "bolder", fontSize: "x-large",paddingTop:"5vw",paddingTop:"1vh",paddingBottom:"1vh" }}> 
         Payment Options
       </div>
       <div style={{  color: "white",paddingTop:"10px" }}>
-        <div style={{marginLeft:'5vw',marginRight:'5vw',borderRadius:'3px', marginBottom:"2vh",fontSize:"medium",background: paymentOption=="UPI" ? "blue" : "grey",width:"90vw"}}>
+        <div style={{marginLeft:'5vw',marginRight:'5vw',borderRadius:'3px', marginBottom:"2vh",fontSize:"large",background: paymentOption=="UPI" ? "blue" : "grey",width:"90vw",paddingTop:"1vh",paddingBottom:"1vh"}}>
           <input type="radio" id="upi" name="paymentOption" value="UPI" onChange={handlePaymentOptionChange} />
           <label htmlFor="upi">Pay via UPI(PhonePe,GPay)</label>
         </div>
-        <div style={{marginLeft:'5vw',marginRight:'5vw',borderRadius:'3px',marginBottom:"2vh",fontSize:"medium",background: paymentOption=="CreditCard" ? "blue" : "grey",width:"90vw"}}>
+        <div style={{marginLeft:'5vw',marginRight:'5vw',borderRadius:'3px', marginBottom:"2vh",fontSize:"large",background: paymentOption=="CreditCard" ? "blue" : "grey",width:"90vw",paddingTop:"1vh",paddingBottom:"1vh"}}>
           <input type="radio" id="creditCard" name="paymentOption" value="CreditCard" onChange={handlePaymentOptionChange} />
           <label htmlFor="creditCard">Pay via Credit/Debit card</label>
         </div>
-        <div style={{marginLeft:'5vw',marginRight:'10px',borderRadius:'3px',marginBottom:"2vh",fontSize:"medium",background: paymentOption=="NetBanking" ? "blue" : "grey",width:"90vw"}}>
+        <div style={{marginLeft:'5vw',marginRight:'10px',borderRadius:'3px',marginBottom:"2vh",fontSize:"large",background: paymentOption=="NetBanking" ? "blue" : "grey",width:"90vw",paddingTop:"1vh",paddingBottom:"1vh"}}>
           <input type="radio" id="netBanking" name="paymentOption" value="NetBanking" onChange={handlePaymentOptionChange} />
           <label htmlFor="netBanking">Net Banking</label>
         </div>
