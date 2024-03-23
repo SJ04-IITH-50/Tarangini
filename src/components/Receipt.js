@@ -113,19 +113,19 @@ function Receipt() {
         Payment Options
       </div>
       <div style={{  color: "white",paddingTop:"10px" }}>
-        <div style={{marginLeft:'5vw',marginRight:'5vw',borderRadius:'3px', marginBottom:"2vh",fontSize:"large",background: paymentOption=="UPI" ? "blue" : "grey",width:"90vw",paddingTop:"1vh",paddingBottom:"1vh"}}>
+        <div style={{marginLeft:'5vw',marginRight:'5vw',borderRadius:'10px', marginBottom:"2vh",fontSize:"large",background: paymentOption=="UPI" ? "blue" : "grey",width:"90vw",paddingTop:"1vh",paddingBottom:"1vh",paddingLeft:"4px"}}>
           <input type="radio" id="upi" name="paymentOption" value="UPI" onChange={handlePaymentOptionChange} />
           <label htmlFor="upi">Pay via UPI(PhonePe,GPay)</label>
         </div>
-        <div style={{marginLeft:'5vw',marginRight:'5vw',borderRadius:'3px', marginBottom:"2vh",fontSize:"large",background: paymentOption=="CreditCard" ? "blue" : "grey",width:"90vw",paddingTop:"1vh",paddingBottom:"1vh"}}>
+        <div style={{marginLeft:'5vw',marginRight:'5vw',borderRadius:'10px', marginBottom:"2vh",fontSize:"large",background: paymentOption=="CreditCard" ? "blue" : "grey",width:"90vw",paddingTop:"1vh",paddingBottom:"1vh",paddingLeft:"4px"}}>
           <input type="radio" id="creditCard" name="paymentOption" value="CreditCard" onChange={handlePaymentOptionChange} />
           <label htmlFor="creditCard">Pay via Credit/Debit card</label>
         </div>
-        <div style={{marginLeft:'5vw',marginRight:'10px',borderRadius:'3px',marginBottom:"2vh",fontSize:"large",background: paymentOption=="NetBanking" ? "blue" : "grey",width:"90vw",paddingTop:"1vh",paddingBottom:"1vh"}}>
+        <div style={{marginLeft:'5vw',marginRight:'10px',borderRadius:'10px',marginBottom:"2vh",fontSize:"large",background: paymentOption=="NetBanking" ? "blue" : "grey",width:"90vw",paddingTop:"1vh",paddingBottom:"1vh",paddingLeft:"4px"}}>
           <input type="radio" id="netBanking" name="paymentOption" value="NetBanking" onChange={handlePaymentOptionChange} />
           <label htmlFor="netBanking">Net Banking</label>
         </div>
-        <button onClick={handleProceedToPay} disabled={!paymentOption} style={{ marginTop: "10px", background: paymentOption ? "#4CAF50" : "#ccc", color: "white", padding: "14px 20px", fontSize: "16px", border: "none", borderRadius: "4px", cursor: "pointer", transition: "background-color 0.3s", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",width:"80vw",marginLeft:"10vw" }}>Proceed to Pay {tp} rs</button>
+        <button onClick={handleProceedToPay} disabled={!paymentOption} style={{ marginTop: "10px", background: paymentOption ? "#4CAF50" : "#ccc", color: "white", padding: "14px 20px", fontSize: "16px", border: "none", borderRadius: "10px", cursor: "pointer", transition: "background-color 0.3s", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",width:"80vw",marginLeft:"10vw" }}>Proceed to Pay {tp} rs</button>
       </div>
     </>
   );
