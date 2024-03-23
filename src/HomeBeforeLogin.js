@@ -29,7 +29,7 @@ function HomeBeforeLogin() {
             this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
 
             var that = this;
-            var delta = 50;
+            var delta = 100;
 
             if (this.isDeleting) { delta /= 2; }
 
@@ -39,7 +39,7 @@ function HomeBeforeLogin() {
             } else if (this.isDeleting && this.txt === '') {
                 this.isDeleting = false;
                 this.loopNum++;
-                delta = 500;
+                delta =500;
             }
 
             setTimeout(function () {

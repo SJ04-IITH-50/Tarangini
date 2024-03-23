@@ -18,6 +18,7 @@ transition: transform 0.3s ease;
 position: fixed;
 top: 61vh;
 left: 40%;
+border-radius: 10%;
 }
 .login_button:hover {
 transform: scale(1.1);
