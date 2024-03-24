@@ -338,11 +338,11 @@ function Graph() {
         <div>
           {graphType === 'daily' && (
             <div>
-              <h2 style={{textAlign:"center"}}>Daily Graph</h2>
+              <h2 style={{textAlign:"center",color:"white",paddingTop:"2vh"}}>Daily Graph</h2>
               {/* Render your daily graph using userData */}
               {/* <p>User data: {JSON.stringify(userData)}</p> */}
-              <Bar options={options} data={data_2} />
-              <Line options={options_1} data={data_3} style={{marginTop:'40px'}}/>
+              <Bar options={options} data={data_2} style={{marginTop:'3vh'}} />
+              <Line options={options_1} data={data_3} style={{marginTop:'7vh'}}/>
             </div>
           )}
           {graphType === 'monthly' && (
