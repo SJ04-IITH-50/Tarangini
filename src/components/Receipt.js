@@ -66,6 +66,10 @@ function Receipt() {
     border: "2px solid #000",
     boxShadow: 24,
     p: 4,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
   };
 
   useEffect(() => {
