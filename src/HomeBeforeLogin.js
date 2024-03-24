@@ -15,37 +15,45 @@ function HomeBeforeLogin() {
             this.tick();
             this.isDeleting = false;
         };
-
         TxtType.prototype.tick = function () {
             var i = this.loopNum % this.toRotate.length;
             var fullTxt = this.toRotate[i];
-
+        
             if (this.isDeleting) {
                 this.txt = fullTxt.substring(0, this.txt.length - 1);
             } else {
                 this.txt = fullTxt.substring(0, this.txt.length + 1);
             }
-
+        
             this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
-
+        
             var that = this;
-            var delta = 100;
-
+            var delta = 75;
+        
             if (this.isDeleting) { delta /= 2; }
-
+        
             if (!this.isDeleting && this.txt === fullTxt) {
-                delta = this.period;
-                this.isDeleting = true;
-            } else if (this.isDeleting && this.txt === '') {
-                this.isDeleting = false;
-                this.loopNum++;
-                delta =500;
+                // Stop after typing the text once
+                this.stopTyping();
+                return;
             }
-
+        
             setTimeout(function () {
                 that.tick();
             }, delta);
         };
+        
+        TxtType.prototype.stopTyping = function () {
+            // Do nothing if already stopped
+            if (!this.isDeleting) return;
+        
+            // Set the text to the final state
+            var i = this.loopNum % this.toRotate.length;
+            var fullTxt = this.toRotate[i];
+            this.el.innerHTML = '<span class="wrap">' + fullTxt + '</span>';
+        };
+        
+        
 
         var elements = document.getElementsByClassName('typewrite');
         for (var i = 0; i < elements.length; i++) {
