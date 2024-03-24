@@ -347,11 +347,11 @@ function Graph() {
           )}
           {graphType === 'monthly' && (
             <div>
-              <h2 style={{textAlign:"center"}}>Monthly Graph</h2>
+              <h2 style={{textAlign:"center",paddingTop:"2vh",color:"white"}}>Monthly Graph</h2>
               {/* Render your monthly graph using userData */}
               {/* <p>User data: {JSON.stringify(userData)}</p> */}
-              <Bar options={options} data={data} />
-              <Line options={options_1} data={data_1} style={{marginTop:'40px'}}/>
+              <Bar options={options} data={data} style={{marginTop:'3vh'}} />
+              <Line options={options_1} data={data_1} style={{marginTop:'7vh'}}/>
             </div>
           )}
         </div>

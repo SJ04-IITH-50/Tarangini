@@ -91,7 +91,7 @@ body {
   height: 2em;
   position: fixed;
   top: 2%;
-  right: 2%;
+  left: 2%;
   z-index: 10;
   background-color: inherit;
   background-image: url(https://res.cloudinary.com/dnpyq0ocz/image/upload/v1588441892/icon-hamburger.svg);
@@ -111,10 +111,10 @@ body {
   /* background-color: rgba(27, 24, 113, 1); */
   background-color: white;
   /* background-size: 117px 188px; */
-  transition: all 0.4s cubic-bezier(0.42, 0, 0.34, 1.01);
+  transition: all 0.4s cubic-bezier(0.5, 0.1, 0.5, 1.01);
   position: fixed;
   z-index: 15;
-  right: -100%;
+  left: -50%;
   top: 0;
   height: 100%;
   width: 100%;
@@ -129,7 +129,7 @@ body {
   &.open {
     visibility: visible;
     width: 100%;
-    right: 0;
+    left: 0;
     opacity: 1;
     cursor: pointer;
   }
@@ -204,7 +204,7 @@ ul {
     content: "";
     position: fixed;
     top: 1.7vh;
-    right: 4px;
+    left: 33px;
     width: 8px;
     height: 8px;
     background-color: red; /* Change color as needed */

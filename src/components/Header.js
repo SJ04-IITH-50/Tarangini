@@ -124,9 +124,9 @@ function Header() {
 
   return (
     <div>
-      <div className="logo_tarangini" onClick={gotoHome}>
+      {/* <div className="logo_tarangini" onClick={gotoHome}>
         <img src="tarangini_logo.png" className="logo" alt="Tarangini Logo" />
-      </div>
+      </div> */}
 
       {/* {user && (
         <div className="profile-icon" onClick={() => setShowLogout(!showLogout)}>
