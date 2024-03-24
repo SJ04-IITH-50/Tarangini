@@ -398,7 +398,7 @@ function Receipt() {
             marginLeft: "10vw",
           }}
         >
-          Proceed to Pay {tp} rs
+          Proceed to Pay {tp_net} rs
         </button>
       </div>
     </>

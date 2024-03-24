@@ -46,12 +46,16 @@ const styles = {
     maxWidth: '100vw',
     zIndex: 1000, // Adjust z-index as needed
     // backgroundImage: 'linear-gradient(120deg, rgba(7, 7, 9, 1) 16%, rgba(27, 24, 113, 1) 96%)',
-    backgroundColor: 'rgba(27, 24, 113, 1)',
+    backgroundColor:'rgb(37,41,41)',
     borderTop: '1px solid #ccc', // Add a line above the navigation bar
+    color:"white",
   },
   icon: {
-    color: 'white', // Change the color of icons to white
+    color: 'white' // Change the color of icons to white
   },
+  label : {
+    color: 'white'
+  }
 };
 
 export default function LabelBottomNavigation() {
