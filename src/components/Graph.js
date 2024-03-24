@@ -83,7 +83,7 @@ function Graph() {
   // Extract user data from location state
   const userData = location.state && location.state.user ? JSON.parse(location.state.user) : null;
 
-  const [graphType, setGraphType] = useState('monthly'); // Default to monthly
+  const [graphType, setGraphType] = useState('daily'); // Default to monthly
   const [month_G, setMonth_G] = useState(null);
   const [month_H, setMonth_H] = useState(null);
   let month_H_demo=[0,0,0,0,0,0,0,0,0,0,0,0];
@@ -147,7 +147,7 @@ function Graph() {
   //     },
   //     title: {
   //       display: true,
-  //       text: 'Power from Solar Panels',
+  //       text: 'Energy from Solar Panels',
   //     },
   //   },
   // };
@@ -160,25 +160,35 @@ function Graph() {
       },
       title: {
         display: true,
-        text: 'Power from Solar Panels',
+        text: 'Energy from Solar Panels',
         color:'White',
       },
     },
     scales: {
-      x: {
-        ticks: {
-          color: 'white', // Change the color of the x-axis labels
-        },
-      },
       y: {
         ticks: {
-          color: 'white', // Change the color of the y-axis labels
+          color: 'white',
+          // Adjust the maximum value as needed
+          max: 500, // Set this value to the desired maximum y-axis value
+        },
+      },
+    },
+    // Annotations for y = 0 line
+    plugins: {
+      annotation: {
+        annotations: {
+          zeroLine: {
+            type: 'line',
+            yMin: 0,
+            yMax: 0,
+            borderColor: 'red',
+            borderWidth: 2,
+          },
         },
       },
     },
   };
   
-
   const options_1 = {
     responsive: true,
     plugins: {
@@ -187,24 +197,34 @@ function Graph() {
       },
       title: {
         display: true,
-        text: 'Power to the Grid',
+        text: 'Energy from the Grid',
         color:'White',
       },
     },
     scales: {
-      x: {
-        ticks: {
-          color: 'white', // Change the color of the x-axis labels
-        },
-      },
       y: {
         ticks: {
-          color: 'white', // Change the color of the y-axis labels
+          color: 'white',
+          // Adjust the maximum value as needed
+          max: 500, // Set this value to the desired maximum y-axis value
+        },
+      },
+    },
+    // Annotations for y = 0 line
+    plugins: {
+      annotation: {
+        annotations: {
+          zeroLine: {
+            type: 'line',
+            yMin: 0,
+            yMax: 0,
+            borderColor: 'red',
+            borderWidth: 2,
+          },
         },
       },
     },
   };
-
   
   const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul','Aug','Sept','Oct','Nov','Dec'];
   
@@ -212,7 +232,7 @@ function Graph() {
     labels,
     datasets: [
       {
-        label: 'Power Generated',
+        label: 'Energy Generated',
         data: month_sp,
         backgroundColor: 'white',
         color:'White',
@@ -220,7 +240,7 @@ function Graph() {
 
       },
       {
-        label: 'Power Consumed',
+        label: 'Energy Consumed',
         data: month_H,
         backgroundColor: 'black',
         barThickness: 7, // Change this value to adjust the thickness of bars
@@ -236,7 +256,7 @@ function Graph() {
   if (month_G) {
     data_1.datasets.push({
       type: "line",
-      label: 'Power to Grid',
+      label: 'Energy from Grid',
       data: month_G.map((value, index) => ({ x: index, y: value })),
       borderColor: 'white',
       fill: true, // Fill the area under the line
@@ -252,13 +272,13 @@ function Graph() {
     labels:['1', '2', '3', '4', '5', '6', '7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31'],
     datasets: [
       {
-        label: 'Power Generated',
+        label: 'Energy Generated',
         data: daily_sp,
         backgroundColor: 'white',
         color:'White',
       },
       {
-        label: 'Power Consumed',
+        label: 'Energy Consumed',
         data: daily_H,
         backgroundColor: 'black',
         color:'White',
@@ -271,7 +291,7 @@ function Graph() {
   };
   if (daily_G) {
     data_3.datasets.push({
-      label: 'Power to Grid',
+      label: 'Energy from Grid',
       data: daily_G.map((value, index) => ({ x: index, y: value })),
       borderColor: 'white', // Specify the line color
     });
@@ -288,6 +308,14 @@ function Graph() {
   return (
     <div>
       <div className="switches-container">
+      <input
+          type="radio"
+          id="switchDaily"
+          name="switchPlan"
+          value="daily"
+          checked={graphType === 'daily'}
+          onChange={handleGraphTypeChange}
+        />
         <input
           type="radio"
           id="switchMonthly"
@@ -296,25 +324,27 @@ function Graph() {
           checked={graphType === 'monthly'}
           onChange={handleGraphTypeChange}
         />
-        <input
-          type="radio"
-          id="switchYearly"
-          name="switchPlan"
-          value="yearly"
-          checked={graphType === 'yearly'}
-          onChange={handleGraphTypeChange}
-        />
+        
+        <label htmlFor="switchDaily">Daily</label>
         <label htmlFor="switchMonthly">Monthly</label>
-        <label htmlFor="switchYearly">Daily</label>
-        <div className="switch-wrapper">
+        <div className="switch-wrapper" style={{ padding: graphType === 'daily' ? '0.15rem 0rem 0.15rem 0.05rem' : '0.15rem 0rem 0.15rem 0rem' }}>
           <div className="switch">
+          <div>Daily</div>
             <div>Monthly</div>
-            <div>Daily</div>
           </div>
         </div>
       </div>
       {userData && (
         <div>
+          {graphType === 'daily' && (
+            <div>
+              <h2 style={{textAlign:"center"}}>Daily Graph</h2>
+              {/* Render your daily graph using userData */}
+              {/* <p>User data: {JSON.stringify(userData)}</p> */}
+              <Bar options={options} data={data_2} />
+              <Line options={options_1} data={data_3} style={{marginTop:'40px'}}/>
+            </div>
+          )}
           {graphType === 'monthly' && (
             <div>
               <h2 style={{textAlign:"center"}}>Monthly Graph</h2>
@@ -322,15 +352,6 @@ function Graph() {
               {/* <p>User data: {JSON.stringify(userData)}</p> */}
               <Bar options={options} data={data} />
               <Line options={options_1} data={data_1} style={{marginTop:'40px'}}/>
-            </div>
-          )}
-          {graphType === 'yearly' && (
-            <div>
-              <h2 style={{textAlign:"center"}}>Yearly Graph</h2>
-              {/* Render your yearly graph using userData */}
-              {/* <p>User data: {JSON.stringify(userData)}</p> */}
-              <Bar options={options} data={data_2} />
-              <Line options={options_1} data={data_3} style={{marginTop:'40px'}}/>
             </div>
           )}
         </div>

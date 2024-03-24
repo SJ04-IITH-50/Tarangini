@@ -61,7 +61,7 @@ function Receipt() {
     left: "50%",
     transform: "translate(-50%, -50%)",
     width: "70vw",
-    height: "60vh",
+    height: "50vh",
     bgcolor: "background.paper",
     border: "2px solid #000",
     boxShadow: 24,
@@ -215,7 +215,6 @@ function Receipt() {
                       textAlign: "center",
                       color: "black",
                       fontWeight: "bolder",
-                      paddingTop:"2vw",
                     }}
                   >
                     Billing(Tarangini)
