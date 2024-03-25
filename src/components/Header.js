@@ -123,7 +123,7 @@ function Header() {
 
 
   return (
-    <div>
+    <div style={{paddingBottom:'13%'}}>
       {/* <div className="logo_tarangini" onClick={gotoHome}>
         <img src="tarangini_logo.png" className="logo" alt="Tarangini Logo" />
       </div> */}

@@ -242,7 +242,7 @@ function Graph() {
       {
         label: 'Energy Consumed',
         data: month_H,
-        backgroundColor: 'black',
+        backgroundColor: '#848484',
         barThickness: 7, // Change this value to adjust the thickness of bars
         color:'White',
       },
@@ -280,7 +280,7 @@ function Graph() {
       {
         label: 'Energy Consumed',
         data: daily_H,
-        backgroundColor: 'black',
+        backgroundColor: '#848484',
         color:'White',
       },
     ],

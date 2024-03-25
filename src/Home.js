@@ -116,6 +116,7 @@ function Home() {
   //     setConfirmLogout(true);
   //   }
   // };
+  console.log(grid);  
 
   return (
     <div className="home-container">
@@ -148,7 +149,7 @@ function Home() {
       ) : (
         <button className="login" onClick={() => navigate("/login")}>Login</button>
       )} */}
-      <div className="centered-text">Welcome to Tarangini</div>
+      {/* <div className="centered-text">Welcome to Tarangini</div> */}
 
       <div style={{ display: "flex", justifyContent: "center" }}>
         <img
@@ -157,11 +158,11 @@ function Home() {
           alt="Solar_panels Image"
         />
       </div>
-      {userData && (
+      {/* {userData && (
           <div className="centered-text">
             Current Produced: {Isp} units
           </div>
-        )}
+        )} */}
 
       {/* <div className="scroll-prompt">
         <div className="scroll-prompt-arrow-container">
@@ -170,33 +171,53 @@ function Home() {
         </div>
       </div> */}
 
-      <DownwardArrow />
-
+      {/* <DownwardArrow /> */}
+      <div className="vertical-line"></div>
+      <div style={{ display: "flex", justifyContent: "center",paddingTop:"23%" }}>
+        <img
+          src="logo_white.png"
+          className="logo"
+          alt="Tarangini"
+        />
+      </div>
+      <div className="vertical-line-left"></div>
+      {grid >= 0 ?  <div className="vertical-line-right-down"></div>: <div className="vertical-line-right-up"></div>}
       <div style={{ display: "flex", justifyContent: "center" }}>
         <img src="home_image.png" className="home" alt="Home Image" />
-      </div>
-      {userData && (
-          <div className="centered-text">
-            Current Consumed: {IH} units
-          </div>
-        )}
-
-      {/* <div className="scroll-prompt">
-        <div className="scroll-prompt-arrow-container">
-          <div className="scroll-prompt-arrow"><div></div></div>
-          <div className="scroll-prompt-arrow"><div></div></div>
-        </div>
-      </div> */}
-
-      {grid >= 0 ? <DownwardArrow /> : <UpwardArrow />}
-
-      <div style={{ display: "flex", justifyContent: "center" }}>
         <img
           src="grid-removebg-preview.png"
           className="grid"
           alt="Grid Image"
         />
       </div>
+
+      {/* {userData && (
+          <div className="centered-text">
+            Current Consumed: {IH} units
+          </div>
+        )} */}
+
+      {/* <div className="scroll-prompt">
+        <div className="scroll-prompt-arrow-container">
+          <div className="scroll-prompt-arrow"><div></div></div>
+          <div className="scroll-prompt-arrow"><div></div></div>
+        </div>
+      </div> */}
+
+      {/* {grid >= 0 ? <DownwardArrow /> : <UpwardArrow />} */}
+
+      {/* <div style={{ display: "flex", justifyContent: "center" }}>
+        <img
+          src="grid-removebg-preview.png"
+          className="grid"
+          alt="Grid Image"
+        />
+      </div> */}
+
+      <div className="centered-text">
+        Current generated today: {Isp} kW
+      </div>
+
       {grid >= 0 ?
           <div className="centered-text">
             Current to Grid: {IG} units
@@ -206,8 +227,6 @@ function Home() {
          Current from Grid: {IG} units
        </div>}
       
-
-      <div className="centered-text">Development in Progress...</div>
     </div>
   );
 }
