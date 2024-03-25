@@ -190,13 +190,17 @@ function Home() {
 
       <div className="vertical-line"></div>
       <div
-        style={{ display: "flex", justifyContent: "center", paddingTop: "27%" }}
+        style={{ display: "flex", justifyContent: "center", paddingTop: "35%" }}
       >
         <img src="logo_white.png" className="logo" alt="Tarangini" />
       </div>
+      <div className="vertical-lin-left"></div>
       <div className="vertical-line-left"></div>
       {grid >= 0 ? (
+        <div>
+        <div className="vertical-lin-right-down"></div>
         <div className="vertical-line-right-down"></div>
+        </div>
       ) : (
         <div className="vertical-line-right-up"></div>
       )}

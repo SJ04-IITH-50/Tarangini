@@ -156,8 +156,48 @@ margin-right: 5px;
 	background: 'white';
 	/* Center the line horizontally */
 	border-radius: 10px; /* Adjust border radius as needed */
+	z-index: 10;
   }
   .vertical-lin{
+	width: 3px; /* Adjust width as needed */
+	height: 15%; /* Adjust height as needed */
+	position: absolute;
+	left: 50%; /* Position the line in the middle */
+	top: calc(12% + 50px); /* Adjust top position as needed */
+	/* background: linear-gradient(to bottom, #808080, #808080); //Initial gradient flow */
+	background: 'white';
+	border-radius: 10px;
+	animation: flowAnimation 1s infinite; /* Animation */
+	z-index: 5;
+  }
+  .vertical-line:before {
+	content: "";
+	position: absolute;
+	top: -50%;
+	height: 13%;
+	width: 3px;
+	background-color: green;
+	-webkit-animation: lineAnim 2s linear infinite;
+	-moz-animation: lineAnim 2s linear infinite;
+	animation: lineAnim 2s linear infinite;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+}
+
+.vertical-line-left {
+	/* padding-bottom: 20%; */
+	width: 2px; /* Adjust width as needed */
+	height: 13%; /* Adjust height as needed */
+	position: absolute;
+	left: 50%; /* Position the line in the middle */
+	top: calc(14% + 50px); /* Adjust top position as needed */
+	/* background: linear-gradient(to bottom, #808080, #808080); //Initial gradient flow */
+	background: 'white';
+	/* Center the line horizontally */
+	border-radius: 10px; /* Adjust border radius as needed */
+  }
+  .vertical-lin-left{
 	width: 3px; /* Adjust width as needed */
 	height: 15%; /* Adjust height as needed */
 	position: absolute;
@@ -169,16 +209,56 @@ margin-right: 5px;
 	animation: flowAnimation 0.7s infinite; /* Animation */
 	
   }
-  .vertical-line:before {
+  .vertical-line-left:before {
 	content: "";
 	position: absolute;
 	top: -50%;
 	height: 13%;
 	width: 3px;
 	background-color: green;
-	-webkit-animation: lineAnim 1s linear infinite;
-	-moz-animation: lineAnim 1s linear infinite;
-	animation: lineAnim 1s linear infinite;
+	-webkit-animation: lineAnim 2s linear infinite;
+	-moz-animation: lineAnim 2s linear infinite;
+	animation: lineAnim 2s linear infinite;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+}
+
+.vertical-line-right-down {
+	/* padding-bottom: 20%; */
+	width: 2px; /* Adjust width as needed */
+	height: 13%; /* Adjust height as needed */
+	position: absolute;
+	left: 50%; /* Position the line in the middle */
+	top: calc(14% + 50px); /* Adjust top position as needed */
+	/* background: linear-gradient(to bottom, #808080, #808080); //Initial gradient flow */
+	background: 'white';
+	/* Center the line horizontally */
+	border-radius: 10px; /* Adjust border radius as needed */
+	z-index: 10;
+  }
+  .vertical-line-right-down{
+	width: 3px; /* Adjust width as needed */
+	height: 15%; /* Adjust height as needed */
+	position: absolute;
+	left: 50%; /* Position the line in the middle */
+	top: calc(12% + 50px); /* Adjust top position as needed */
+	/* background: linear-gradient(to bottom, #808080, #808080); //Initial gradient flow */
+	background: 'white';
+	border-radius: 10px;
+	animation: flowAnimation 1s infinite; /* Animation */
+	z-index: 5;
+  }
+  .vertical-line-right-down:before {
+	content: "";
+	position: absolute;
+	top: -50%;
+	height: 13%;
+	width: 3px;
+	background-color: green;
+	-webkit-animation: lineAnim 2s linear infinite;
+	-moz-animation: lineAnim 2s linear infinite;
+	animation: lineAnim 2s linear infinite;
 	-webkit-border-radius: 20px;
 	-moz-border-radius: 20px;
 	border-radius: 20px;
