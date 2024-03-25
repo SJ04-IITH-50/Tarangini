@@ -6,7 +6,7 @@
 .logo{
 	/* height:40%;
 	width: 30%; */
-	/* padding-top: 20%; */
+	/* padding-top: 5%; */
 	height: 25%;
 	width: 25%;
 	border-radius: 50%;
@@ -19,10 +19,9 @@
 }
 
 .solar_panels{
-  padding-top: 10%;
   place-items: "center";
-  width: 23%;
-  height: 23%;
+  width: 30%;
+  height: 30%;
 }
 
 .Battery{
@@ -43,7 +42,7 @@
   padding-top: 15%;
   height: 25%;
   width: 25%;
-  padding-right: 10%;
+  padding-left: 10%;
   /* padding-top: 5%; */
 }
 
@@ -152,20 +151,60 @@ margin-right: 5px;
 	height: 13%; /* Adjust height as needed */
 	position: absolute;
 	left: 50%; /* Position the line in the middle */
-	top: calc(11% + 50px); /* Adjust top position as needed */
+	top: calc(14% + 50px); /* Adjust top position as needed */
 	/* background: linear-gradient(to bottom, #808080, #808080); //Initial gradient flow */
-	background: '#808080';
-	transform: translateX(-50%); /* Center the line horizontally */
+	background: 'white';
+	/* Center the line horizontally */
 	border-radius: 10px; /* Adjust border radius as needed */
-	animation: flowAnimation 0.7s infinite; /* Animation */
   }
+  .vertical-lin{
+	width: 3px; /* Adjust width as needed */
+	height: 15%; /* Adjust height as needed */
+	position: absolute;
+	left: 50%; /* Position the line in the middle */
+	top: calc(12% + 50px); /* Adjust top position as needed */
+	/* background: linear-gradient(to bottom, #808080, #808080); //Initial gradient flow */
+	background: 'white';
+	border-radius: 10px;
+	animation: flowAnimation 0.7s infinite; /* Animation */
+	
+  }
+  .vertical-line:before {
+	content: "";
+	position: absolute;
+	top: -50%;
+	height: 13%;
+	width: 3px;
+	background-color: green;
+	-webkit-animation: lineAnim 1s linear infinite;
+	-moz-animation: lineAnim 1s linear infinite;
+	animation: lineAnim 1s linear infinite;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+}
+
+@keyframes lineAnim {
+	
+	0%{
+		top: -20%;
+	}
+	50% {
+		top: 20%;
+		height: 100%;
+	}
+	100% {
+		top: 80%;
+		height: 5%;
+	}
+}
 
   .vertical-line-left {
-	width: 2px; /* Adjust width as needed */
-	height: 13%; /* Adjust height as needed */
+	width: 1.5px; /* Adjust width as needed */
+	height: 14%; /* Adjust height as needed */
 	position: absolute;
-	left: 40%; /* Position the line in the middle */
-	top: calc(42% + 50px); /* Adjust top position as needed */
+	left: 35%; /* Position the line in the middle */
+	top: calc(45% + 50px); /* Adjust top position as needed */
 	/* background: linear-gradient(to bottom, #808080, #808080); //Initial gradient flow */
 	background: '#808080';
 	transform: translateX(-50%); /* Center the line horizontally */
@@ -175,11 +214,11 @@ margin-right: 5px;
   }
 
   .vertical-line-right-down {
-	width: 2px; /* Adjust width as needed */
-	height: 13%; /* Adjust height as needed */
+	width: 1.5px; /* Adjust width as needed */
+	height: 15%; /* Adjust height as needed */
 	position: absolute;
-	left: 60%; /* Position the line in the middle */
-	top: calc(42% + 50px); /* Adjust top position as needed */
+	left: 65%; /* Position the line in the middle */
+	top: calc(45% + 50px); /* Adjust top position as needed */
 	/* background: linear-gradient(to bottom, #808080, #808080); //Initial gradient flow */
 	background: '#808080';
 	transform: translateX(-50%); /* Center the line horizontally */
@@ -208,7 +247,7 @@ margin-right: 5px;
 	  background-size: 100% 0%; /* Start gradient size */
 	}
 	100%{
-	  background: linear-gradient(to bottom, white, rgb(17, 133, 17)); /* End gradient */
+	  background: linear-gradient(to bottom, white, white); /* End gradient */
 	  background-size: 100% 100%; /* End gradient size */
 	}
   }

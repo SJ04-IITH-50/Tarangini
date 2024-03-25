@@ -12,6 +12,7 @@ import {
   setDoc,
 } from "firebase/firestore";
 import { db } from "./utils/firebase.utils";
+import Button from "@mui/material/Button";
 
 //To update the data of the user by Email
 async function updateUserByEmail(email, newData) {
@@ -23,8 +24,18 @@ async function updateUserByEmail(email, newData) {
       await updateDoc(docRef, newData);
     } else {
       // Initialize data with all fields set to 0
-      await setDoc(docRef, { ...newData, ...{ I_sp: 0, I_H: 0, I_G: 0,Notification:false,Month_H:[0,0,0,0,0,0,0,0,0,0,0,0],Month_sp:[0,0,0,0,0,0,0,0,0,0,0,0],Month_G:[0,0,0,0,0,0,0,0,0,0,0,0]} });
-      
+      await setDoc(docRef, {
+        ...newData,
+        ...{
+          I_sp: 0,
+          I_H: 0,
+          I_G: 0,
+          Notification: false,
+          Month_H: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          Month_sp: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          Month_G: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        },
+      });
     }
   } catch (error) {
     console.log(error);
@@ -55,10 +66,10 @@ async function getUserByEmail(email) {
 function Home() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [Isp,setIsp]=useState(0);
-  const [IH,setIH]=useState(0);
-  const [IG,setIG]=useState(0);
-  const [grid,setGrid]=useState(0);
+  const [Isp, setIsp] = useState(0);
+  const [IH, setIH] = useState(0);
+  const [IG, setIG] = useState(0);
+  const [grid, setGrid] = useState(0);
 
   const userData =
     location.state && location.state.user
@@ -89,14 +100,14 @@ function Home() {
           setIsp(I_sp);
           setIH(I_H);
           setGrid(I_G);
-          if(I_G<0){
-            setIG((-1)*I_G)
+          if (I_G < 0) {
+            setIG(-1 * I_G);
             console.log(IG);
           }
         }
       })();
     } else {
-    //  console.log("Home to login!")
+      //  console.log("Home to login!")
       navigate("/"); // Navigate to the home page if user data is null
     }
   }, [userData, navigate]);
@@ -116,7 +127,7 @@ function Home() {
   //     setConfirmLogout(true);
   //   }
   // };
-  console.log(grid);  
+  console.log(grid);
 
   return (
     <div className="home-container">
@@ -158,6 +169,9 @@ function Home() {
           alt="Solar_panels Image"
         />
       </div>
+      <div style={{ display: "flex", justifyContent: "center",color:"white",fontSize:"10px" }}>
+      <div>Energy Produced:{Isp}kW</div>
+      </div>
       {/* {userData && (
           <div className="centered-text">
             Current Produced: {Isp} units
@@ -172,23 +186,42 @@ function Home() {
       </div> */}
 
       {/* <DownwardArrow /> */}
+      <div className="vertical-lin"></div>
+
       <div className="vertical-line"></div>
-      <div style={{ display: "flex", justifyContent: "center",paddingTop:"23%" }}>
-        <img
-          src="logo_white.png"
-          className="logo"
-          alt="Tarangini"
-        />
+      <div
+        style={{ display: "flex", justifyContent: "center", paddingTop: "27%" }}
+      >
+        <img src="logo_white.png" className="logo" alt="Tarangini" />
       </div>
       <div className="vertical-line-left"></div>
-      {grid >= 0 ?  <div className="vertical-line-right-down"></div>: <div className="vertical-line-right-up"></div>}
+      {grid >= 0 ? (
+        <div className="vertical-line-right-down"></div>
+      ) : (
+        <div className="vertical-line-right-up"></div>
+      )}
+      <div style={{ display: "flex", justifyContent: "center",}}>
+        <div>
+        <img src="home_image.png" className="home" alt="Home Image" style={{width:"50%",height:"50%",marginTop:"10%"}}/>
+      <div  style={{width:"30vw",color:"white",fontSize:"10px",paddingLeft:"10%"}}>Energy Consumed: {IH} kW</div>
+      </div>
+      <div>
+          <img
+            src="grid-removebg-preview.png"
+            className="grid"
+            alt="Grid Image"
+            style={{width:"65%",height:"65%",marginTop:"10%"}}
+          />
+          {grid >= 0 ? (
+            <div style={{width:"30vw",color:"white",fontSize:"10px",paddingLeft:"25%"}}>Energy to Grid: {IG }kW</div>
+          ) : (
+            <div style={{width:"30vw",color:"white",fontSize:"10px",paddingLeft:"25%"}}>Energy from Grid: {IG} kW</div>
+          )}
+         </div>
+      </div>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <img src="home_image.png" className="home" alt="Home Image" />
-        <img
-          src="grid-removebg-preview.png"
-          className="grid"
-          alt="Grid Image"
-        />
+      
+
       </div>
 
       {/* {userData && (
@@ -214,19 +247,30 @@ function Home() {
         />
       </div> */}
 
-      <div className="centered-text">
-        Current generated today: {Isp} kW
+      <div
+        style={{
+          display: "flex",
+          textAlign: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Button
+          variant="contained"
+          style={{
+            backgroundColor: "#848484",
+            width: "40vw",
+            marginRight: "5vw",
+          }}
+        >
+          Generated Today:{Isp}kW
+        </Button>
+        <Button
+          variant="contained"
+          style={{ backgroundColor: "#848484", width: "40vw" }}
+        >
+          Consumption Rate:{(Isp / IH) * 100}%
+        </Button>
       </div>
-
-      {grid >= 0 ?
-          <div className="centered-text">
-            Current to Grid: {IG} units
-          </div>
-      
-         : <div className="centered-text">
-         Current from Grid: {IG} units
-       </div>}
-      
     </div>
   );
 }
