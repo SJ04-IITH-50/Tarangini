@@ -190,7 +190,7 @@ function Home() {
 
       <div className="vertical-line"></div>
       <div
-        style={{ display: "flex", justifyContent: "center", paddingTop: "35%" }}
+        style={{ display: "flex", justifyContent: "center", paddingTop: "33%", paddingBottom:"7%" }}
       >
         <img src="logo_white.png" className="logo" alt="Tarangini" />
       </div>
