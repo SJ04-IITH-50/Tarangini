@@ -185,32 +185,32 @@ function Header() {
             {notf == false ?
               <li onClick={handleNotification} className='icons' >
                 <NotificationsNoneOutlinedIcon style={{ paddingRight: "2px", height: "27.5px" }} />
-                <a >Notifications</a>
+                <a style={{paddingLeft:"3%", paddingTop:"2%"}}>Notifications</a>
               </li> :
               <li onClick={handleNotification} className='icons' >
                 <NotificationImportantOutlinedIcon style={{ paddingRight: "2px", height: "27.5px" }} />
                 <div id='dot'></div>
-                <a >Notifications</a>
+                <a style={{paddingLeft:"3%", paddingTop:"2%"}}>Notifications</a>
               </li>}
             <li className='icons' onClick={gotoHome}>
               <InfoOutlinedIcon style={{ paddingRight: "2px", height: "27.5px"}} />
-              <a >About Us</a>
+              <a style={{paddingLeft:"3%", paddingTop:"2%"}}>About Us</a>
             </li>
             <li className='icons' onClick={gotoHome}>
               <PermContactCalendarOutlinedIcon style={{ paddingRight: "2px", height: "27.5px" }} />
-              <a>Contact Us</a>
+              <a style={{paddingLeft:"3%", paddingTop:"2%"}}>Contact Us</a>
             </li>
             <li className='icons' onClick={gotoHome}>
               <SettingsOutlinedIcon style={{ paddingRight: "2px", height: "27.5px" }} />
-              <a >Settings</a>
+              <a style={{paddingLeft:"3%", paddingTop:"2%"}}>Settings</a>
             </li>
             <li className='icons' onClick={gotoHome}>
               <GradeOutlinedIcon style={{ paddingRight: "2px", height: "27.5px" }} />
-              <a>Rate Us</a>
+              <a style={{paddingLeft:"3%", paddingTop:"2%"}}>Rate Us</a>
             </li>
             <li className='logout' onClick={handleLogout} >
               <LogoutOutlinedIcon style={{ paddingRight: "2px", height: "27.5px" }} />
-              <a style={{ color: "red" }}>Log out</a>
+              <a style={{paddingLeft:"3%", paddingTop:"2%",color:"red"}}>Log out</a>
             </li>
           </ul>
         </div>
