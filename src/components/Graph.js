@@ -227,6 +227,8 @@ function Graph() {
           color: 'white',
           // Adjust the maximum value as needed
           max: 2000, // Set this value to the desired maximum y-axis value
+          // stepSize: 10,
+          stepLength: 5,
         },
       },
     },
@@ -432,20 +434,20 @@ function Graph() {
         <div>
           {graphType === 'daily' && (
             <div>
-              <h2 style={{textAlign:"center",color:"white",paddingTop:"2vh"}}>Daily Graph</h2>
+              <h2 style={{textAlign:"center",color:"white",paddingTop:"3vh"}}>Daily Graph</h2>
               {/* Render your daily graph using userData */}
               {/* <p>User data: {JSON.stringify(userData)}</p> */}
-              <Bar options={options} data={data_2} style={{marginTop:'3vh'}} />
-              <Line options={options_1} data={data_3} style={{marginTop:'7vh'}}/>
+              <Bar options={options} data={data_2} style={{marginTop:'4.5vh'}} />
+              <Line options={options_1} data={data_3} style={{marginTop:'8vh'}}/>
             </div>
           )}
           {graphType === 'monthly' && (
             <div>
-              <h2 style={{textAlign:"center",paddingTop:"2vh",color:"white"}}>Monthly Graph</h2>
+              <h2 style={{textAlign:"center",paddingTop:"3vh",color:"white"}}>Monthly Graph</h2>
               {/* Render your monthly graph using userData */}
               {/* <p>User data: {JSON.stringify(userData)}</p> */}
-              <Bar options={options} data={data} style={{marginTop:'3vh'}} />
-              <Line options={options_1} data={data_1} style={{marginTop:'7vh'}}/>
+              <Bar options={options} data={data} style={{marginTop:'4.5vh'}} />
+              <Line options={options_1} data={data_1} style={{marginTop:'8vh'}}/>
             </div>
           )}
         </div>
