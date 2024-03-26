@@ -152,6 +152,55 @@ function Graph() {
   //   },
   // };
 
+  const zeroLine_data_daily=[
+  { x: 1, y: 0 },
+  { x: 2, y: 0 },
+  { x: 3, y: 0 },
+  { x: 4, y: 0 },
+  { x: 5, y: 0 },
+  { x: 6, y: 0 },
+  { x: 7, y: 0 },
+  { x: 8, y: 0 },
+  { x: 9, y: 0 },
+  { x: 10, y: 0 },
+  { x: 11, y: 0 },
+  { x: 12, y: 0 },
+  { x: 13, y: 0 },
+  { x: 14, y: 0 },
+  { x: 15, y: 0 },
+  { x: 16, y: 0 },
+  { x: 17, y: 0 },
+  { x: 18, y: 0 },
+  { x: 19, y: 0 },
+  { x: 20, y: 0 },
+  { x: 21, y: 0 },
+  { x: 22, y: 0 },
+  { x: 23, y: 0 },
+  { x: 24, y: 0 },
+  { x: 25, y: 0 },
+  { x: 26, y: 0 },
+  { x: 27, y: 0 },
+  { x: 28, y: 0 },
+  { x: 29, y: 0 },
+  { x: 30, y: 0 },
+  { x: 31, y: 0 },
+  ]
+
+  const zeroLine_data_monthly=[
+    { x: "Jan", y: 0 },
+    { x: 'Feb', y: 0 },
+    { x: 'Mar', y: 0 },
+    { x: 'Apr', y: 0 },
+    { x: 'May', y: 0 },
+    { x: 'Jun', y: 0 },
+    { x: 'Jul', y: 0 },
+    { x: 'Aug', y: 0 },
+    { x: 'Sept', y: 0 },
+    { x: 'Oct', y: 0 },
+    { x: 'Nov', y: 0 },
+    { x: 'Dec', y: 0 },
+    ]
+
   const options = {
     responsive: true,
     plugins: {
@@ -177,7 +226,7 @@ function Graph() {
         ticks: {
           color: 'white',
           // Adjust the maximum value as needed
-          max: 800, // Set this value to the desired maximum y-axis value
+          max: 2000, // Set this value to the desired maximum y-axis value
         },
       },
     },
@@ -202,6 +251,9 @@ function Graph() {
     plugins: {
       legend: {
         position: 'top',
+        labels: {
+          color: 'white', // Set legend label color
+        },
       },
       title: {
         display: true,
@@ -224,6 +276,16 @@ function Graph() {
           // Adjust the maximum value as needed
           max: 800, // Set this value to the desired maximum y-axis value
         },
+      },
+    },
+    elements: {
+      point: {
+        radius: 0, // Set point radius to 0 to hide points
+      },
+      line: {
+        borderWidth: 2,
+        fill: false,
+        cubicInterpolationMode: 'monotone', // Smooth interpolation
       },
     },
     // Annotations for y = 0 line
@@ -276,7 +338,15 @@ function Graph() {
       data: month_G.map((value, index) => ({ x: index, y: value })),
       borderColor: 'white',
       fill: true, // Fill the area under the line
-    });
+    },
+    {
+      type: "line",
+      label: 'Zero line',
+      borderWidth:1,
+      data: zeroLine_data_monthly,
+      borderColor: 'grey',
+    }
+    );
   }
   
   
@@ -311,6 +381,13 @@ function Graph() {
       data: daily_G.map((value, index) => ({ x: index, y: value })),
       borderColor: 'white', // Specify the line color
       borderWidth:2,
+    },
+    {
+      type: "line",
+      label: 'Zero line',
+      data: zeroLine_data_daily,
+      borderColor: 'grey',
+      borderWidth:1,
     });
   }
 
