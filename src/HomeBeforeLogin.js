@@ -79,13 +79,13 @@ function HomeBeforeLogin() {
     return (
         <>
             <div style={{ display: "flex", justifyContent: "center" }}>
-                <img src="tarangini_logo_just_Image.png" className="before_login_logo" alt="logo" />
+                <img src="tarangini-logo-white.png" className="before_login_logo" alt="logo" />
             </div>
-            <h1 style={{ textAlign: "center" }}>
+            <p style={{textAlign:"center", marginTop:"0px"}} >
                 <a href="" className="typewrite" data-period="2000" data-type='["Tarangini"]'>
                     <span className="wrap"></span>
                 </a>
-            </h1>
+            </p>
             <div style={{ display: "flex", justifyContent: "center" }}>
                 <button className="login_button" onClick={logGoogleUser}>
                     Login

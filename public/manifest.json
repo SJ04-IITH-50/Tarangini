@@ -3,17 +3,17 @@
   "name": "Tarangini",
   "icons": [
     {
-      "src": "tarangini-favicon-black.png",
+      "src": "tarangini-favicon-black-removebg-preview.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "tarangini-favicon-black.png",
+      "src": "tarangini-favicon-black-removebg-preview.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "tarangini-favicon-black.png",
+      "src": "tarangini-favicon-black-removebg-preview.png",
       "type": "image/png",
       "sizes": "512x512"
     }

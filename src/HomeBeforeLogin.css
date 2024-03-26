@@ -3,7 +3,9 @@
 
 
 .before_login_logo{
-    padding-top: 25vh;
+  height: 28%;
+  width: 28%;
+    padding-top: 27vh;
 }
 .typewrite{
     color: white;
@@ -23,7 +25,7 @@ font-size: 16px;
 cursor: pointer;
 transition: transform 0.3s ease;
 position: fixed;
-top: 63vh;
+top: 60vh;
 left: 40%;
 border-radius: 10%;
 }
