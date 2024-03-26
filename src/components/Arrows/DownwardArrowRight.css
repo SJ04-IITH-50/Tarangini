@@ -1,43 +1,42 @@
-.scroll-prompt-up {
+.scroll-prompt-right {
 	position: relative;
 	z-index: 1;
-	/* bottom: -80px; */
-	left: 65%;
-	bottom: 35px;
-	margin-left: -72px;
+	bottom: 80px;
+	left: 45%;
+	margin-left: -40px;
 	margin-bottom: -100px;
 	width: 150px;
 	height: 150px;
 }
 
-.scroll-prompt-arrow-container-up {
+.scroll-prompt-arrow-container-right {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	animation-name: bounce_up;
+	animation-name: bounce_right;
 	animation-duration: 1.5s;
 	animation-iteration-count: infinite;
 }
 
-.scroll-prompt-arrow-up {
+.scroll-prompt-arrow-right {
 	animation-name: opacity;
 	animation-duration: 1.5s;
 	animation-iteration-count: infinite;
 }
 
-.scroll-prompt-arrow-up:last-child {
+.scroll-prompt-arrow-right:last-child {
 	animation-direction: reverse;
 	margin-top: -8px;
 	margin-left: 17px;
 }
 
-.scroll-prompt-arrow-up > div {
+.scroll-prompt-arrow-right > div {
 	width: 25px;
 	height: 25px;
 	border-right: 8px solid #bebebe;
 	border-bottom: 8px solid #bebebe;
-	transform: rotate(-170deg) translateX(1px);
+	transform: rotate(10deg) translateX(1px);
 }
 
 @keyframes opacity {
@@ -86,48 +85,48 @@
 	}
 }
 
-@keyframes bounce_up {
+@keyframes bounce_right {
 	0% {
 		transform: translateY(0) translateX(0);
 	}
 
 	10% {
-		transform: translateY(-3px) translateX(-3px);
+		transform: translateY(3px) translateX(3px);
 	}
 
 	20% {
-		transform: translateY(-6px) translateX(-6px);
+		transform: translateY(6px) translateX(6px);
 	}
 
 	30% {
-		transform: translateY(-9px) translateX(-9px);
+		transform: translateY(9px) translateX(9px);
 	}
 
 	40% {
-		transform: translateY(-12px) translateX(-12px);
+		transform: translateY(12px) translateX(12px);
 	}
 
 	50% {
-		transform: translateY(-15px) translateX(-15px);
+		transform: translateY(15px) translateX(15px);
 	}
 
 	60% {
-		transform: translateY(-18px) translateX(-18px);
+		transform: translateY(18px) translateX(18px);
 	}
 
 	70% {
-		transform: translateY(-21px) translateX(-21px);
+		transform: translateY(21px) translateX(21px);
 	}
 
 	80% {
-		transform: translateY(-24px) translateX(-24px);
+		transform: translateY(24px) translateX(24px);
 	}
 
 	90% {
-		transform: translateY(-27px) translateX(-27px);
+		transform: translateY(27px) translateX(27px);
 	}
 
 	100% {
-		transform: translateY(-30px) translateX(-30px);
+		transform: translateY(30px) translateX(30px);
 	}
 }
