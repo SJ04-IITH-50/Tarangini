@@ -130,20 +130,30 @@ function Home() {
       <div style={{ display: "flex", justifyContent: "center", color: "white", fontSize: "12px", paddingTop: "2%" }}>
         <div>Energy Produced:{Isp}kW</div>
       </div>
-
-      <DownwardArrow />
-      {/* <div className="vertical-lin"></div> */}
-      {/* <div className="vertical-line"></div> */}
+      {Isp > 0 ? (
+        <DownwardArrow />
+      ) : (
+        <></>
+      )}
+      {/* <DownwardArrow /> */}
+     
       <div
         style={{ display: "flex", justifyContent: "center", paddingTop: "15%" }}
       >
         <img src="logo_white.png" className="logo" alt="Tarangini" />
       </div>
-      <DownwardArrowLeft />
-      {grid >= 0 ? (
+      {IH > 0 ? (
+        <DownwardArrowLeft />
+      ) : (
+        <></>
+      )}
+      {/* <DownwardArrowLeft /> */}
+      {grid > 0 ? (
         <DownwardArrowRight />
       ) : (
-        <UpwardArrow />
+        <>
+        {grid < 0 ? (<UpwardArrow/>):(<></>)}</>
+        // <UpwardArrow />
       )}
       <div style={{ display: "flex", justifyContent: "center", }}>
         <div>
