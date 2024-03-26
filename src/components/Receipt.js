@@ -269,7 +269,7 @@ function Receipt() {
                       justifyContent: "center",
                       color: "black",
                       fontSize: "medium",
-
+                      paddingTop:"1.5vh",
                     }}
                   >
                     <div style={{ textAlign: "left", marginRight: "15px", }}>
