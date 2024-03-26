@@ -89,8 +89,8 @@ function Receipt() {
     const tp_notax = cpu * month_consumed || 0;
     const cgst = 0.07 * tp_notax || 0;
     const sgst = 0.07 * tp_notax || 0;
-    const tp = tp_notax + cgst + sgst  || 0;
-    const tp_net=tp+57|| 0;
+    const tp = tp_notax + cgst + sgst || 0;
+    const tp_net = tp + 57 || 0;
 
     setCGST(cgst.toFixed(2));
     setSGST(sgst.toFixed(2));
@@ -178,25 +178,27 @@ function Receipt() {
             <div>Net Total</div>
           </div>
           <div style={{ textAlign: "left" }}>
-            <div>{month_consumed} KW</div>
+            <div>{month_consumed} kW</div>
             {/* <div>1.5 rs/KW</div>
           <div>{cgst} rs</div>
           <div>{sgst} rs</div> */}
             <hr />
             <div style={{ display: "flex", justifyContent: "center" }}>
-              {tp_net} rs{" "}
+              {tp_net} Rs{" "}
               <InfoOutlinedIcon
                 onClick={handleOpen}
                 style={{ width: "20px", paddingLeft: "2px" }}
               />
             </div>
+            
             <Modal
+              style={{borderColor:"black"}}
               open={open}
               onClose={handleClose}
               aria-labelledby="modal-modal-title"
               aria-describedby="modal-modal-description"
             >
-              <Box sx={style}>
+              <Box sx={style} >
                 {/* <Typography id="modal-modal-title" variant="h6" component="h2">
             Text in a modal
           </Typography>
@@ -217,7 +219,7 @@ function Receipt() {
                       fontWeight: "bolder",
                     }}
                   >
-                    Billing(Tarangini)
+                    Tarangini
                   </div>
                   <hr style={{ color: "red" }} />
                   <div
@@ -225,28 +227,28 @@ function Receipt() {
                       display: "flex",
                       justifyContent: "center",
                       color: "black",
-                      fontSize:"medium",
-                      
+                      fontSize: "medium",
+
                     }}
                   >
-                    <div style={{ textAlign: "left",marginRight:"15px", }}>
+                    <div style={{ textAlign: "left", marginRight: "15px", }}>
                       <div>Units:</div>
                       <div>Cost per Unit:</div>
                       <div>CGST (7%):</div>
                       <div>SGST (7%):</div>
                       <hr />
-                      <div>Total(Tarangini)</div>
+                      <div>Total</div>
                     </div>
                     <div style={{ textAlign: "left" }}>
-                      <div>{month_consumed} KW</div>
-                      <div>1.5 rs/KW</div>
-                      <div>{cgst} rs</div>
-                      <div>{sgst} rs</div>
+                      <div>{month_consumed} kW</div>
+                      <div>1.5 Rs/kW</div>
+                      <div>{cgst} Rs</div>
+                      <div>{sgst} Rs</div>
                       <hr />
-                      <div>{tp} rs</div>
+                      <div>{tp} Rs</div>
                     </div>
                   </div>
-                  
+
                 </div>
                 <div
                   style={{
@@ -260,10 +262,10 @@ function Receipt() {
                       textAlign: "center",
                       color: "black",
                       fontWeight: "bolder",
-                      paddingTop:"10px"
+                      paddingTop: "15px"
                     }}
                   >
-                    Billing(DISKON)
+                    DISCOM
                   </div>
                   <hr style={{ color: "red" }} />
                   <Button variant="outlined">APPCSDL</Button>
@@ -272,29 +274,22 @@ function Receipt() {
                       display: "flex",
                       justifyContent: "center",
                       color: "black",
-                      fontSize:"medium",
-                      
+                      fontSize: "medium",
+
                     }}
                   >
-                    <div style={{ textAlign: "left",marginRight:"15px", }}>
-                      <div>Amount:</div>
-                      <div>CGST (7%):</div>
-                      <div>SGST (7%):</div>
-                      <hr />
-                      <div>Total(Provider)</div>
+                    <div style={{ textAlign: "left", marginRight: "15px", }}>
+                      <div>Total</div>
                     </div>
                     <div style={{ textAlign: "left" }}>
-                      <div>50 rs</div>
-                      <div>3.5 rs</div>
-                      <div>3.5 rs</div>
-                      <hr />
-                      <div>57 rs</div>
+
+                      <div>57 Rs</div>
                     </div>
                   </div>
                   {/* <Button variant="contained" color="success" style={{marginTop:"15px"}}>Total:- {tp_net} rs</Button> */}
 
                 </div>
-                
+
               </Box>
             </Modal>
           </div>
@@ -310,7 +305,7 @@ function Receipt() {
           fontWeight: "bolder",
           fontSize: "x-large",
           paddingTop: "5vw",
-          paddingTop: "1vh",
+          paddingTop: "3vh",
           paddingBottom: "1vh",
         }}
       >
@@ -324,7 +319,8 @@ function Receipt() {
             borderRadius: "3px",
             marginBottom: "2vh",
             fontSize: "large",
-            background: paymentOption == "UPI" ? "blue" : "grey",
+            background: paymentOption == "UPI" ? "grey" : "white",
+            color:paymentOption == "UPI" ? "white" : "black",
             width: "90vw",
             paddingTop: "1vh",
             paddingBottom: "1vh",
@@ -337,7 +333,7 @@ function Receipt() {
             value="UPI"
             onChange={handlePaymentOptionChange}
           />
-          <label htmlFor="upi">Pay via UPI(PhonePe,GPay)</label>
+          <label htmlFor="upi" style={{paddingLeft:"1%"}}>Pay via UPI(PhonePe,GPay)</label>
         </div>
         <div
           style={{
@@ -346,7 +342,8 @@ function Receipt() {
             borderRadius: "3px",
             marginBottom: "2vh",
             fontSize: "large",
-            background: paymentOption == "CreditCard" ? "blue" : "grey",
+            background: paymentOption == "CreditCard" ? "grey" : "white",
+            color:paymentOption == "CreditCard" ? "white" : "black",
             width: "90vw",
             paddingTop: "1vh",
             paddingBottom: "1vh",
@@ -359,7 +356,7 @@ function Receipt() {
             value="CreditCard"
             onChange={handlePaymentOptionChange}
           />
-          <label htmlFor="creditCard">Pay via Credit/Debit card</label>
+          <label htmlFor="creditCard" style={{paddingLeft:"1%"}}>Pay via Credit/Debit card</label>
         </div>
         <div
           style={{
@@ -368,7 +365,8 @@ function Receipt() {
             borderRadius: "3px",
             marginBottom: "2vh",
             fontSize: "large",
-            background: paymentOption == "NetBanking" ? "blue" : "grey",
+            background: paymentOption == "NetBanking" ? "grey" : "white",
+            color:paymentOption == "NetBanking" ? "white" : "black",
             width: "90vw",
             paddingTop: "1vh",
             paddingBottom: "1vh",
@@ -381,7 +379,7 @@ function Receipt() {
             value="NetBanking"
             onChange={handlePaymentOptionChange}
           />
-          <label htmlFor="netBanking">Net Banking</label>
+          <label htmlFor="netBanking" style={{paddingLeft:"1%"}}>Net Banking</label>
         </div>
         <button
           onClick={handleProceedToPay}
@@ -401,7 +399,7 @@ function Receipt() {
             marginLeft: "10vw",
           }}
         >
-          Proceed to Pay {tp_net} rs
+          Proceed to Pay {tp_net} Rs
         </button>
       </div>
     </>

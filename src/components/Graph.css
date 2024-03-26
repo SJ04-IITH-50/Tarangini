@@ -1,7 +1,7 @@
 :root {
     --switches-bg-color: white;
-    --switches-label-color: rgba(27, 24, 113, 1) ;
-    --switch-bg-color: rgba(27, 24, 113, 1);
+    --switches-label-color: rgb(37, 41, 41) ;
+    --switch-bg-color: rgb(37, 41, 41);
     --switch-text-color: white ;
 }
 

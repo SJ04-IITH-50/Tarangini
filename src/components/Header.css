@@ -91,7 +91,7 @@ body {
   height: 2em;
   position: fixed;
   top: 2%;
-  left: 2%;
+  left: 6%;
   z-index: 10;
   background-color: inherit;
   background-image: url(https://res.cloudinary.com/dnpyq0ocz/image/upload/v1588441892/icon-hamburger.svg);
@@ -189,6 +189,7 @@ ul {
     content: "";
     position: absolute;
     top: 0;
+    /* left: 5%; */
     right: 0;
     width: 8px;
     height: 8px;
@@ -204,7 +205,7 @@ ul {
     content: "";
     position: fixed;
     top: 1.7vh;
-    left: 33px;
+    left: 42px;
     width: 8px;
     height: 8px;
     background-color: red; /* Change color as needed */

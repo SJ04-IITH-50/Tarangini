@@ -165,11 +165,19 @@ function Graph() {
       },
     },
     scales: {
+      x: {
+        grid: {
+          display: false, // Set this to false to hide the gridlines
+        },
+      },
       y: {
+        grid: {
+          display: false, // Set this to false to hide the gridlines
+        },
         ticks: {
           color: 'white',
           // Adjust the maximum value as needed
-          max: 500, // Set this value to the desired maximum y-axis value
+          max: 800, // Set this value to the desired maximum y-axis value
         },
       },
     },
@@ -202,11 +210,19 @@ function Graph() {
       },
     },
     scales: {
+      x: {
+        grid: {
+          display: false, // Set this to false to hide the gridlines
+        },
+      },
       y: {
+        grid: {
+          display: false, // Set this to false to hide the gridlines
+        },
         ticks: {
           color: 'white',
           // Adjust the maximum value as needed
-          max: 500, // Set this value to the desired maximum y-axis value
+          max: 800, // Set this value to the desired maximum y-axis value
         },
       },
     },
@@ -218,7 +234,7 @@ function Graph() {
             type: 'line',
             yMin: 0,
             yMax: 0,
-            borderColor: 'red',
+            borderColor: 'white',
             borderWidth: 2,
           },
         },
@@ -294,6 +310,7 @@ function Graph() {
       label: 'Energy from Grid',
       data: daily_G.map((value, index) => ({ x: index, y: value })),
       borderColor: 'white', // Specify the line color
+      borderWidth:2,
     });
   }
 

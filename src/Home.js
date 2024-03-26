@@ -74,6 +74,7 @@ function Home() {
   const [IH, setIH] = useState(0);
   const [IG, setIG] = useState(0);
   const [grid, setGrid] = useState(0);
+  const [energyIndependence, setEnergyIndependence] = useState(0);
 
   const userData =
     location.state && location.state.user
@@ -108,6 +109,12 @@ function Home() {
     }
   }, [userData, navigate]);
 
+  useEffect(() => {
+    // Calculate energy independence percentage
+    const independence = Math.round((Isp / IH) * 100);
+    setEnergyIndependence(independence);
+  }, [Isp, IH]);
+
   console.log(grid);
 
   return (
@@ -120,7 +127,7 @@ function Home() {
           alt="Solar_panels Image"
         />
       </div>
-      <div style={{ display: "flex", justifyContent: "center", color: "white", fontSize: "12px", paddingTop:"2%" }}>
+      <div style={{ display: "flex", justifyContent: "center", color: "white", fontSize: "12px", paddingTop: "2%" }}>
         <div>Energy Produced:{Isp}kW</div>
       </div>
 
@@ -132,23 +139,23 @@ function Home() {
       >
         <img src="logo_white.png" className="logo" alt="Tarangini" />
       </div>
-      <DownwardArrowLeft/>
+      <DownwardArrowLeft />
       {grid >= 0 ? (
         <DownwardArrowRight />
       ) : (
-        <UpwardArrow/>
+        <UpwardArrow />
       )}
       <div style={{ display: "flex", justifyContent: "center", }}>
         <div>
           <img src="home_image.png" className="home" alt="Home Image" style={{ width: "50%", height: "50%", marginTop: "5%" }} />
-          <div style={{ width: "30vw", color: "white", fontSize: "10px", paddingLeft: "10%", paddingTop:"2%" }}>Energy Consumed: {IH} kW</div>
+          <div style={{ width: "30vw", color: "white", fontSize: "10px", paddingLeft: "10%", paddingTop: "2%" }}>Energy Consumed: {IH} kW</div>
         </div>
         <div>
           <img
             src="grid-removebg-preview.png"
             className="grid"
             alt="Grid Image"
-            style={{ width: "65%", height: "65%",  }}
+            style={{ width: "65%", height: "65%", }}
           />
           {grid >= 0 ? (
             <div style={{ width: "30vw", color: "white", fontSize: "10px", paddingLeft: "25%" }}>Energy to Grid: {IG}kW</div>
@@ -198,16 +205,32 @@ function Home() {
             backgroundColor: "#848484",
             width: "40vw",
             marginRight: "5vw",
+            textTransform: "none", // Add this line to prevent capitalization
           }}
         >
           Generated Today:{Isp}kW
         </Button>
+        {energyIndependence <=100 ?
+          <Button
+          variant="contained"
+          style={{ backgroundColor: "#848484", width: "40vw", textTransform: "none",  }}
+        >
+          Energy Independence:{energyIndependence}%
+        </Button>
+        :
         <Button
+          variant="contained"
+          style={{ backgroundColor: "#848484", width: "40vw", textTransform: "none",  }}
+        >
+          Energy Independence:100%
+        </Button>
+        }
+        {/* <Button
           variant="contained"
           style={{ backgroundColor: "#848484", width: "40vw" }}
         >
-          Consumption Rate:{(Isp / IH) * 100}%
-        </Button>
+          Energy Independence:{energyIndependence}%
+        </Button> */}
       </div>
     </div>
   );
