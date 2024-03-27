@@ -449,10 +449,10 @@ function Graph() {
           {graphType === 'daily' && (
             <div>
               <h2 style={{ textAlign: "center", color: "white", paddingTop: "3vh" }}>Daily Graph</h2>
-              <div style={{ height: '300px', width: '100%' }}>
+              <div style={{ height: '300px', width: '100%',marginTop: '4.5vh' }}>
                 <Bar options={options} data={data_2} />
               </div>
-              <div style={{ height: '300px', width: '100%' }}>
+              <div style={{ height: '300px', width: '100%',marginTop: '8vh' }}>
                 <Line options={options} data={data_3} />
               </div>
             </div>
@@ -462,11 +462,11 @@ function Graph() {
               <h2 style={{ textAlign: "center", paddingTop: "3vh", color: "white" }}>Monthly Graph</h2>
               {/* Render your monthly graph using userData */}
               {/* <p>User data: {JSON.stringify(userData)}</p> */}
-              <div style={{ height: '300px', width: '100%' }}>
-                <Bar options={options} data={data} style={{ marginTop: '4.5vh' }} />
+              <div style={{ height: '300px', width: '100%',marginTop: '4.5vh'  }}>
+                <Bar options={options} data={data} />
               </div>
-              <div style={{ height: '300px', width: '100%' }}>
-                <Line options={options_1} data={data_1} style={{ marginTop: '8vh' }} />
+              <div style={{ height: '300px', width: '100%', marginTop: '8vh' }}>
+                <Line options={options_1} data={data_1}  />
               </div>
             </div>
           )}
