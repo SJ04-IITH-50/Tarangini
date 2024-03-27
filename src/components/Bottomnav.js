@@ -114,19 +114,19 @@ export default function LabelBottomNavigation() {
           label="Home"
           value="recents"
           icon={<HomeIcon sx={styles.icon} />} // Apply the style to each icon
-          sx={{ '.MuiBottomNavigationAction-label': { color: 'white' } }} // Apply white color to the label text
+          sx={{ '.MuiBottomNavigationAction-label': { color: 'white' }, '&:hover': { color: 'grey' } }} // Apply white color to the label text
         />
         <BottomNavigationAction
           label="Graph"
           value="favorites"
           icon={<EqualizerIcon sx={styles.icon} />} // Apply the style to each icon
-          sx={{ '.MuiBottomNavigationAction-label': { color: 'white' } }} // Apply white color to the label text
+          sx={{ '.MuiBottomNavigationAction-label': { color: 'white' },'&:hover': { color: 'grey' } }} // Apply white color to the label text
         />
         <BottomNavigationAction
           label="Receipt"
           value="nearby"
           icon={<ReceiptIcon sx={styles.icon} />} // Apply the style to each icon
-          sx={{ '.MuiBottomNavigationAction-label': { color: 'white' } }} // Apply white color to the label text
+          sx={{ '.MuiBottomNavigationAction-label': { color: 'white' },'&:hover': { color: 'grey' } }} // Apply white color to the label text
         />
       </BottomNavigation>
     </React.Fragment>
