@@ -86,11 +86,11 @@ function Graph() {
   const [graphType, setGraphType] = useState('daily'); // Default to monthly
   const [month_G, setMonth_G] = useState(null);
   const [month_H, setMonth_H] = useState(null);
-  let month_H_demo=[0,0,0,0,0,0,0,0,0,0,0,0];
+  let month_H_demo = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   const [month_sp, setMonth_sp] = useState(null);
   const [daily_G, setDaily_G] = useState(null);
   const [daily_H, setDaily_H] = useState(null);
-  let daily_H_demo=[0,0,0,0,0,0,0,0,0,0,0,0];
+  let daily_H_demo = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   const [daily_sp, setDaily_sp] = useState(null);
 
   useEffect(() => {
@@ -124,7 +124,7 @@ function Graph() {
       .catch(error => {
         console.log(error);
       });
-}, []); // Empty dependency array for running only once
+  }, []); // Empty dependency array for running only once
 
 
   // getUserByEmail_daily(userData.email)
@@ -152,41 +152,41 @@ function Graph() {
   //   },
   // };
 
-  const zeroLine_data_daily=[
-  { x: 1, y: 0 },
-  { x: 2, y: 0 },
-  { x: 3, y: 0 },
-  { x: 4, y: 0 },
-  { x: 5, y: 0 },
-  { x: 6, y: 0 },
-  { x: 7, y: 0 },
-  { x: 8, y: 0 },
-  { x: 9, y: 0 },
-  { x: 10, y: 0 },
-  { x: 11, y: 0 },
-  { x: 12, y: 0 },
-  { x: 13, y: 0 },
-  { x: 14, y: 0 },
-  { x: 15, y: 0 },
-  { x: 16, y: 0 },
-  { x: 17, y: 0 },
-  { x: 18, y: 0 },
-  { x: 19, y: 0 },
-  { x: 20, y: 0 },
-  { x: 21, y: 0 },
-  { x: 22, y: 0 },
-  { x: 23, y: 0 },
-  { x: 24, y: 0 },
-  { x: 25, y: 0 },
-  { x: 26, y: 0 },
-  { x: 27, y: 0 },
-  { x: 28, y: 0 },
-  { x: 29, y: 0 },
-  { x: 30, y: 0 },
-  { x: 31, y: 0 },
+  const zeroLine_data_daily = [
+    { x: 1, y: 0 },
+    { x: 2, y: 0 },
+    { x: 3, y: 0 },
+    { x: 4, y: 0 },
+    { x: 5, y: 0 },
+    { x: 6, y: 0 },
+    { x: 7, y: 0 },
+    { x: 8, y: 0 },
+    { x: 9, y: 0 },
+    { x: 10, y: 0 },
+    { x: 11, y: 0 },
+    { x: 12, y: 0 },
+    { x: 13, y: 0 },
+    { x: 14, y: 0 },
+    { x: 15, y: 0 },
+    { x: 16, y: 0 },
+    { x: 17, y: 0 },
+    { x: 18, y: 0 },
+    { x: 19, y: 0 },
+    { x: 20, y: 0 },
+    { x: 21, y: 0 },
+    { x: 22, y: 0 },
+    { x: 23, y: 0 },
+    { x: 24, y: 0 },
+    { x: 25, y: 0 },
+    { x: 26, y: 0 },
+    { x: 27, y: 0 },
+    { x: 28, y: 0 },
+    { x: 29, y: 0 },
+    { x: 30, y: 0 },
+    { x: 31, y: 0 },
   ]
 
-  const zeroLine_data_monthly=[
+  const zeroLine_data_monthly = [
     { x: "Jan", y: 0 },
     { x: 'Feb', y: 0 },
     { x: 'Mar', y: 0 },
@@ -199,18 +199,20 @@ function Graph() {
     { x: 'Oct', y: 0 },
     { x: 'Nov', y: 0 },
     { x: 'Dec', y: 0 },
-    ]
+  ]
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
+    aspectRatio: 400,
     plugins: {
       legend: {
-        position:'top',
+        position: 'top',
       },
       title: {
         display: true,
         text: 'Energy from Solar Panels',
-        color:'White',
+        color: 'White',
       },
     },
     scales: {
@@ -247,9 +249,11 @@ function Graph() {
       },
     },
   };
-  
+
   const options_1 = {
     responsive: true,
+    maintainAspectRatio: false,
+    aspectRatio: 400,
     plugins: {
       legend: {
         position: 'top',
@@ -260,7 +264,7 @@ function Graph() {
       title: {
         display: true,
         text: 'Energy from the Grid',
-        color:'White',
+        color: 'White',
       },
     },
     scales: {
@@ -305,9 +309,9 @@ function Graph() {
       },
     },
   };
-  
-  const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul','Aug','Sept','Oct','Nov','Dec'];
-  
+
+  const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+
   const data = {
     labels,
     datasets: [
@@ -315,7 +319,7 @@ function Graph() {
         label: 'Energy Generated',
         data: month_sp,
         backgroundColor: 'white',
-        color:'White',
+        color: 'White',
         barThickness: 5, // Change this value to adjust the thickness of bars
 
       },
@@ -324,7 +328,7 @@ function Graph() {
         data: month_H,
         backgroundColor: '#848484',
         barThickness: 7, // Change this value to adjust the thickness of bars
-        color:'White',
+        color: 'White',
       },
     ],
   };
@@ -332,7 +336,7 @@ function Graph() {
     labels,
     datasets: [],
   };
-  
+
   if (month_G) {
     data_1.datasets.push({
       type: "line",
@@ -340,57 +344,67 @@ function Graph() {
       data: month_G.map((value, index) => ({ x: index, y: value })),
       borderColor: 'white',
       fill: true, // Fill the area under the line
+      pointRadius: 0, // Set point radius to 0 to hide points
+      pointHoverRadius: 0, // Set hover point radius to 0
+      cubicInterpolationMode: 'monotone',
     },
-    {
-      type: "line",
-      label: 'Zero line',
-      borderWidth:1,
-      data: zeroLine_data_monthly,
-      borderColor: 'grey',
-    }
+      {
+        type: "line",
+        label: 'Zero line',
+        borderWidth: 1,
+        data: zeroLine_data_monthly,
+        borderColor: 'grey',
+        pointRadius: 0, // Set point radius to 0 to hide points
+        pointHoverRadius: 0, // Set hover point radius to 0
+      }
     );
   }
-  
-  
-  
+
+
+
 
   // const labels_1 = ['1', '2', '3', '4', '5', '6', '7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31'];
-  
+
   const data_2 = {
-    labels:['1', '2', '3', '4', '5', '6', '7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31'],
+    labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'],
     datasets: [
       {
         label: 'Energy Generated',
         data: daily_sp,
         backgroundColor: 'white',
-        color:'White',
+        color: 'White',
       },
       {
         label: 'Energy Consumed',
         data: daily_H,
         backgroundColor: '#848484',
-        color:'White',
+        color: 'White',
       },
     ],
   };
   const data_3 = {
-    labels:['1', '2', '3', '4', '5', '6', '7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31'],
-    datasets: [ ],
+    labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'],
+    datasets: [],
   };
   if (daily_G) {
     data_3.datasets.push({
       label: 'Energy from Grid',
       data: daily_G.map((value, index) => ({ x: index, y: value })),
       borderColor: 'white', // Specify the line color
-      borderWidth:2,
+      borderWidth: 2,
+      pointRadius: 0, // Set point radius to 0 to hide points
+      pointHoverRadius: 0, // Set hover point radius to 0
+      cubicInterpolationMode: 'monotone',
     },
-    {
-      type: "line",
-      label: 'Zero line',
-      data: zeroLine_data_daily,
-      borderColor: 'grey',
-      borderWidth:1,
-    });
+      {
+        type: "line",
+        label: 'Zero line',
+        data: zeroLine_data_daily,
+        borderColor: 'grey',
+        borderWidth: 1,
+        pointRadius: 0, // Set point radius to 0 to hide points
+        pointHoverRadius: 0, // Set hover point radius to 0
+      });
   }
 
   const handleGraphTypeChange = (event) => {
@@ -404,7 +418,7 @@ function Graph() {
   return (
     <div>
       <div className="switches-container">
-      <input
+        <input
           type="radio"
           id="switchDaily"
           name="switchPlan"
@@ -420,12 +434,12 @@ function Graph() {
           checked={graphType === 'monthly'}
           onChange={handleGraphTypeChange}
         />
-        
+
         <label htmlFor="switchDaily">Daily</label>
         <label htmlFor="switchMonthly">Monthly</label>
         <div className="switch-wrapper" style={{ padding: graphType === 'daily' ? '0.15rem 0rem 0.15rem 0.05rem' : '0.15rem 0rem 0.15rem 0rem' }}>
           <div className="switch">
-          <div>Daily</div>
+            <div>Daily</div>
             <div>Monthly</div>
           </div>
         </div>
@@ -434,20 +448,26 @@ function Graph() {
         <div>
           {graphType === 'daily' && (
             <div>
-              <h2 style={{textAlign:"center",color:"white",paddingTop:"3vh"}}>Daily Graph</h2>
-              {/* Render your daily graph using userData */}
-              {/* <p>User data: {JSON.stringify(userData)}</p> */}
-              <Bar options={options} data={data_2} style={{marginTop:'4.5vh'}} />
-              <Line options={options_1} data={data_3} style={{marginTop:'8vh'}}/>
+              <h2 style={{ textAlign: "center", color: "white", paddingTop: "3vh" }}>Daily Graph</h2>
+              <div style={{ height: '300px', width: '100%' }}>
+                <Bar options={options} data={data_2} />
+              </div>
+              <div style={{ height: '300px', width: '100%' }}>
+                <Line options={options} data={data_3} />
+              </div>
             </div>
           )}
           {graphType === 'monthly' && (
             <div>
-              <h2 style={{textAlign:"center",paddingTop:"3vh",color:"white"}}>Monthly Graph</h2>
+              <h2 style={{ textAlign: "center", paddingTop: "3vh", color: "white" }}>Monthly Graph</h2>
               {/* Render your monthly graph using userData */}
               {/* <p>User data: {JSON.stringify(userData)}</p> */}
-              <Bar options={options} data={data} style={{marginTop:'4.5vh'}} />
-              <Line options={options_1} data={data_1} style={{marginTop:'8vh'}}/>
+              <div style={{ height: '300px', width: '100%' }}>
+                <Bar options={options} data={data} style={{ marginTop: '4.5vh' }} />
+              </div>
+              <div style={{ height: '300px', width: '100%' }}>
+                <Line options={options_1} data={data_1} style={{ marginTop: '8vh' }} />
+              </div>
             </div>
           )}
         </div>
